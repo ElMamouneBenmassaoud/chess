@@ -14,7 +14,7 @@ public class Position {
     private int column; //colonne
 
     /**
-     * 
+     * le constructeur permet de définir la ligne et la colonne de la position
      * @param row la ligne de la position 
      * @param column la colonne de la position
      */
