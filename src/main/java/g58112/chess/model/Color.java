@@ -5,7 +5,7 @@
 package g58112.chess.model;
 
 /**
- * Classe qui représente la couleur d'un joueur, d'une case ou d'une pièce du jeu 
+ * Class that represents the color of a player, space, or game piece 
  * @author 58112
  */
 public enum Color {
@@ -14,8 +14,8 @@ public enum Color {
     BLACK;  // Black color
     
     /**
-     * Cette méthode renvoie une couleur opposée d'une couleur donnée 
-     * @return La couleur opposée a celle qui est fournie
+     * This method returns an opposite color of a given color
+     * @return This method returns an opposite color of a given color
      */
     public Color opposite(){
         if(this == WHITE){
