@@ -21,8 +21,6 @@ public enum Color {
         if(this == WHITE){
             return BLACK;
         }
-        else{
-            return WHITE;
-        }
+        return WHITE;     
     }
 }

@@ -34,5 +34,13 @@ public class Board {
         }
         return Posexist;
     }
+    
+    public void setPièce(Piece piece,Position position){
+        if(!contains(position)){
+            throw new IllegalArgumentException("la position n'exist pas sur l'échequier");
+        }  
+       Square casePiece = new Square(piece);
+       this.squares[position.getRow()][position.getColumn()]=casePiece;
+    }
 }
 
