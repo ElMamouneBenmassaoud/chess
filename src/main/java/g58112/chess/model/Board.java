@@ -28,16 +28,16 @@ public class Board {
      * @return true : pos exist on the chessboard and false: pos does not exist in the chessboard
      */
     public boolean contains(Position pos) {
-        boolean Posexist = false;
+        boolean posexist = false;
         if (pos.getRow() >= 0 && pos.getRow() <= 7 && pos.getColumn() >= 0 && pos.getColumn() <= 7) {
-            Posexist = true;
+            posexist = true;
         }
-        return Posexist;
+        return posexist;
     }
     
-    public void setPièce(Piece piece,Position position){
+    public void setPiece(Piece piece,Position position){
         if(!contains(position)){
-            throw new IllegalArgumentException("la position n'exist pas sur l'échequier");
+            throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
         }  
        Square casePiece = new Square(piece);
        this.squares[position.getRow()][position.getColumn()]=casePiece;
