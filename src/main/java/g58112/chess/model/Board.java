@@ -121,7 +121,12 @@ public class Board {
         }
         int row = pos.getRow();
         int column = pos.getColumn();
-        return this.squares[row][column].isFree();
+        boolean isFree = true;
+        if (squares[row][column] != null) {
+            isFree = false;
+        }
+        return isFree;
+    
     }
 
     /**
@@ -153,7 +158,7 @@ public class Board {
      * @param player is the player given
      * @return a list of all positions occupied by the given
      */
-    public List<Position> getPositionsOccuppiedBy(Player player){
+    public List<Position> getPositionOccupiedBy(Player player){
         List<Position> liste = new ArrayList();
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[0].length; j++) {
