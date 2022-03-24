@@ -2,6 +2,10 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ *//*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package g58112.chess.model;
 
@@ -21,7 +25,7 @@ public class Square {
     public Square(Piece piece) {
         this.piece = piece;
     }
-    
+
     /**
      * allows you to get the piece in the square
      * @return 

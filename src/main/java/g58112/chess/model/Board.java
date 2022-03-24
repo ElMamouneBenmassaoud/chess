@@ -22,7 +22,12 @@ public class Board {
      * containing no parts).
      */
     public Board() {
-        this.squares = new Square[8][8];
+        squares = new Square[8][8];
+        for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < squares[0].length; j++) {
+                squares[i][j]= new Square(null);
+            }
+        }
     }
 
     /**
@@ -121,9 +126,9 @@ public class Board {
         }
         int row = pos.getRow();
         int column = pos.getColumn();
-        boolean isFree = true;
-        if (squares[row][column] != null) {
-            isFree = false;
+        boolean isFree = false;
+        if (squares[row][column].getPiece() == null) {
+            isFree = true;
         }
         return isFree;
     
@@ -142,12 +147,8 @@ public class Board {
         if (!contains(pos)) {
             throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
         }
-        int row = pos.getRow();
-        int column = pos.getColumn();
-        Piece piece = this.squares[row][column].getPiece();
-
         boolean opposite = false;
-        if (piece.getColor() != col) {
+        if (!isFree(pos) && squares[pos.getRow()][pos.getColumn()].getPiece().getColor() != col) {
             opposite = true;
         }
         return opposite;
@@ -162,9 +163,8 @@ public class Board {
         List<Position> liste = new ArrayList();
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[0].length; j++) {
-               Position pos = new Position(i,j);
-               Piece piece = this.squares[i][j].getPiece();
-               if(!isFree(pos) && player.getColor()== piece.getColor()){
+               Position pos = new Position(i,j);              
+               if(!isFree(pos) && player.getColor()== squares[i][j].getPiece().getColor()){
                   liste.add(pos);
                }
             }       

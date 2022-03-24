@@ -45,10 +45,7 @@ public class Position {
      * @return la ligne 
      */
     public Position next(Direction dir){
-        int row = this.row + dir.getDeltaRow();
-        int column = this.column + dir.getDeltaColumn();
-        Position position = new Position(row, column);
-        return position;
+        return new Position(this.row + dir.getDeltaRow(),this.column + dir.getDeltaColumn());
     }
 
     @Override
