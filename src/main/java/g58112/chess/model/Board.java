@@ -124,13 +124,8 @@ public class Board {
         if (!contains(pos)) {
             throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
         }
-        int row = pos.getRow();
-        int column = pos.getColumn();
-        boolean isFree = false;
-        if (squares[row][column].getPiece() == null) {
-            isFree = true;
-        }
-        return isFree;
+        
+        return squares[pos.getRow()][pos.getColumn()].isFree();
     
     }
 
