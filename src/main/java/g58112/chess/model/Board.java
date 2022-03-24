@@ -59,7 +59,7 @@ public class Board {
             throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
         }
         Square casePiece = new Square(piece);
-        this.squares[position.getRow()][position.getColumn()] = casePiece;
+        squares[position.getRow()][position.getColumn()] = casePiece;
     }
 
     /**
@@ -78,7 +78,7 @@ public class Board {
 
         int row = pos.getRow();
         int column = pos.getColumn();
-        Piece piece = this.squares[row][column].getPiece();
+        Piece piece = squares[row][column].getPiece();
         return piece;
     }
 
@@ -125,8 +125,7 @@ public class Board {
             throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
         }
         
-        return squares[pos.getRow()][pos.getColumn()].isFree();
-    
+        return squares[pos.getRow()][pos.getColumn()].isFree();    
     }
 
     /**
@@ -165,6 +164,5 @@ public class Board {
             }       
         }
         return liste;
-    }
-      
+    }     
 }
