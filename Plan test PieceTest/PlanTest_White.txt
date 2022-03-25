@@ -1,0 +1,33 @@
+//position initial
+moi blanc et position tjrs (1,1)ou (1,2) ou (1,3)... ((1,6)
+devant moi un pion adverse ✔️
+devant moi un pion adverse (2 cases) ✔️
+dans les 2 diagonals des pions adverses ✔️
+devant moi un pion de meme couleur ✔️
+devant moi un pion de meme couleur(2 cases)✔️
+dans les 2 diagonals des pions de meme couleur✔️
+dans 1 diagonal un pion adverse et devant moi avec un espace un pion adverse // a voir
+dans 1 diagonal un pion adverse et devant moi sans espace un pion adverse	// a voir
+
+//extremité du plateau redemander a mehdi !!!
+moi blanc et position (1,0) ou (1,7)
+extremité pos(7,0) -> catch(iae) ✔️
+(?)devant moi un pion adverse
+(?)devant moi un pion adverse (2 cases)
+(?)dans les 2 diagonals des pions adverses
+(?)devant moi un pion de meme couleur
+(?)devant moi un pion de meme couleur(2 cases)
+(?)dans les 2 diagonals des pions de meme couleur
+
+//au milieu de board
+moi blanc et position milieu de l'echiquier
+devant moi un pion adverse ✔️
+devant moi un pion adverse (2 cases) ✔️
+dans les 2 diagonals des pions adverses ✔️
+devant moi un pion de meme couleur ✔️
+devant moi un pion de meme couleur(2 cases)✔️
+dans les 2 diagonals des pions de meme couleur✔️
+
+
+tt pour noir row = 7!!!!
+❌

@@ -36,22 +36,59 @@ public class Piece {
         return color;
     }
 
+    /**
+     * 
+     * @param position
+     * @param board
+     * @return 
+     */
     public List<Position> getPossibleMoves(Position position, Board board) {
         List<Position> myList = new ArrayList();
-        if (board.getPiece(position) != this) {
-            throw new IllegalArgumentException("La couleur du joueur ne correspend pas celle de la pièce");
+//        if (position.getRow()==0 || position.getRow()==7) {
+//            throw new IllegalArgumentException("Un pion ne peut pas être situé sur la première ou la dernière ligne de l'échiquier");
+//        }
+        Direction direction;
+        Direction directionDiagonalE;
+        Direction directionDiagonalW;
+        Position forward;
+        Position diagonalE;
+        Position diagonalW;
+        if (this.color.equals(Color.WHITE)) {
+            direction = Direction.N;
+            directionDiagonalE = Direction.NE;
+            directionDiagonalW = Direction.NW;
+            forward = position.next(direction);
+            diagonalE = position.next(directionDiagonalE);
+            diagonalW = position.next(directionDiagonalW);
+
+        } else {
+            direction = Direction.S;
+            forward = position.next(direction);
+            directionDiagonalE = Direction.SE;
+            directionDiagonalW = Direction.SW;
+            diagonalE = position.next(directionDiagonalE);
+            diagonalW = position.next(directionDiagonalW);
+
         }
-        Position devant;
-        if (this.color.equals(color.WHITE)) {
-            devant = position.next(Direction.N);
-        }else{
-            devant = position.next(Direction.S);
+        try {
+            if (board.isFree(forward)) {
+                myList.add(forward);
+            }
+
+            if (board.isFree(forward) && board.isFree(forward.next(direction)) && position.getRow() == board.getInitialPawnRow(color)) {
+                myList.add(forward.next(direction));
+            }
+
+            if (board.containsOppositeColor(diagonalE, color)) {
+                myList.add(diagonalE);
+            }
+
+            if (board.containsOppositeColor(diagonalW, color)) {
+                myList.add(diagonalW);
+            }
+        } catch (IllegalArgumentException e) {
         }
-            
-        if(board.isFree(devant)){
-            myList.add(devant);
-        }
-        
+
         return myList;
     }
 
