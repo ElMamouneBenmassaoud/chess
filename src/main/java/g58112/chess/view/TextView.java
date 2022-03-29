@@ -5,6 +5,7 @@
 package g58112.chess.view;
 
 import g58112.chess.model.Model;
+import g58112.chess.model.Player;
 import g58112.chess.model.Position;
 
 /**
@@ -18,11 +19,13 @@ public class TextView implements View {
     public TextView(Model model) {
         this.model = model;
     }
-
     
     @Override
     public void displayTitle() {
-        System.out.println("Bienvenue au jeu des échecs !");
+        String bienvenue ="Bienvenue au jeu des échecs !";
+        System.out.println(bienvenue);
+        System.out.println("-".repeat(bienvenue.length()));
+        System.out.println("Bienvenue aux deux joueurs.");
     }
 
     @Override
@@ -31,6 +34,11 @@ public class TextView implements View {
 
     @Override
     public void displayWinner() {
+        if(model.isGameOver()){
+            Player winner = model.getOppositePlayer();
+            System.out.println("Bien joué !");
+            System.out.println(winner + "a gagné la partie !");
+        }
     }
 
     @Override
