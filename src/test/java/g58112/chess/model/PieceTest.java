@@ -600,6 +600,27 @@ public class PieceTest {
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+    
+    @Test
+    public void white_testGetPossibleMovesRightEdgePawn_eat() {
+        //pion noir se trouve a l'extremite gauche et revoir le nom au test !!!!!!!
+        Position position = new Position(1, 7);
+        Piece piece = new Piece(Color.WHITE);
+        board.setPiece(piece, position);
+
+        
+        Position position2 = new Position(2, 6);
+        Piece piece2 = new Piece(Color.BLACK);
+        board.setPiece(piece2, position2);
+        List<Position> expected = List.of(
+                new Position(2, 7),
+                new Position(3, 7),
+                new Position(2, 6)
+        );
+        List<Position> positions = piece.getPossibleMoves(position, board);
+
+        assertEqualsIgnoringOrder(expected, positions);
+    }
 
     /*
      *      Permet de tester si deux listes de positions sont identiques à l'ordre
