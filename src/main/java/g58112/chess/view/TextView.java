@@ -60,7 +60,6 @@ public class TextView implements View {
 
     @Override
     public void displayError(String message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
