@@ -82,7 +82,7 @@ public class Piece {
         if (board.isFree(forward)) {    //vérifie si la case devant lui est vide
             myList.add(forward);    //ajout dans la liste la position du déplacement d'une case vers l'avant
 
-            if (board.isFree(forward.next(direction)) && position.getRow() == board.getInitialPawnRow(color)) { //vérifie si les 2 cases devant lui sont vides et qu'il se trouve a sa position initial
+            if (position.getRow() == board.getInitialPawnRow(color) && board.isFree(forward.next(direction))) { //vérifie si les 2 cases devant lui sont vides et qu'il se trouve a sa position initial
                 myList.add(forward.next(direction));    //ajout dans la liste les positions du déplacement de 2 cases vers l'avant
             }
         }

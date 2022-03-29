@@ -4,6 +4,7 @@
  */
 package g58112.chess.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,9 +37,6 @@ public class Game implements Model {
 
     @Override
     public Piece getPiece(Position pos) {
-        if (!board.contains(pos)) {
-            throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
-        }
         return board.getPiece(pos);
     }
 
@@ -58,9 +56,6 @@ public class Game implements Model {
 
     @Override
     public boolean isCurrentPlayerPosition(Position pos) {
-        if (!board.contains(pos)) {
-            throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
-        }
         boolean isCurrentPlayerPosition = false;
         if (board.getPiece(pos).getColor() == currentPlayer.getColor()) {
             isCurrentPlayerPosition = true;
@@ -73,39 +68,39 @@ public class Game implements Model {
         if (!board.contains(oldPos) || !board.contains(newPos)) {
             throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
         }
-        
+
         if (board.isFree(oldPos)) {
             throw new IllegalArgumentException("La position de départ ne contient pas de pièce");
         }
-        
+
         if (!isCurrentPlayerPosition(oldPos)) {
             throw new IllegalArgumentException("la pièce n'appartient pas au joueur actuel");
         }
-        
-        if (!getPossibleMoves(oldPos).contains(newPos)){
-            throw new IllegalArgumentException("La position  jouait n'est pas valide");
+
+        if (!getPossibleMoves(oldPos).contains(newPos)) {
+            throw new IllegalArgumentException("La position jouée n'est pas valide");
         }
-        
-        while(!isGameOver()){
-        board.setPiece(getPiece(oldPos), newPos);
-        board.dropPiece(oldPos);
-        getOppositePlayer();
+
+        if(!isGameOver()) {
+            board.setPiece(getPiece(oldPos), newPos);
+            board.dropPiece(oldPos);
+            currentPlayer = getOppositePlayer();
         }
     }
 
     @Override
     public boolean isGameOver() {
-            var currentPos = board.getPositionOccupiedBy(currentPlayer);
-            int i = 0;
-            while(getPossibleMoves(currentPos.get(i)).isEmpty() && i < currentPos.size()){
-                i++;
-            }
-            return i == currentPos.size();
+        List<Position> currentPos = board.getPositionOccupiedBy(currentPlayer);
+        int i = 0;
+        while (getPossibleMoves(currentPos.get(i)).isEmpty() && i < currentPos.size()) {
+            i++;
+        }
+        return i == currentPos.size();
     }
 
     @Override
     public List<Position> getPossibleMoves(Position position) {
-        Piece piece = new Piece(currentPlayer.getColor());
+        Piece piece = board.getPiece(position);
         return piece.getPossibleMoves(position, board);
     }
 
