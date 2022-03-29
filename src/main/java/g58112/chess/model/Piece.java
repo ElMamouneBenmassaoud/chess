@@ -46,13 +46,7 @@ public class Piece {
      */
     public List<Position> getPossibleMoves(Position position, Board board) {
         List<Position> myList = new ArrayList();
-//        if (position.getRow()==0 || position.getRow()==7) {
-//            throw new IllegalArgumentException("Un pion ne peut pas être situé sur la première ou la dernière ligne de l'échiquier");
-//        }
 
-//    if (!color.equals(Color.BLACK)|| !color.equals(Color.WHITE)) {
-//        throw new IllegalArgumentException("veuillez entrez une couleur logique soit noir et blanc");
-//    }
         Direction direction;
         Direction directionDiagonalE;
         Direction directionDiagonalW;
@@ -78,27 +72,27 @@ public class Piece {
             diagonalW = position.next(directionDiagonalW);  //Position sud west a partir du pion
 
         }
-        try{
-        if (board.isFree(forward)) {    //vérifie si la case devant lui est vide
-            myList.add(forward);    //ajout dans la liste la position du déplacement d'une case vers l'avant
+        try {   //catch l'exception si la position n'existe pas sur le chessboard et verifier la condition suivante
+            if (board.isFree(forward)) {    //vérifie si la case devant lui est vide
+                myList.add(forward);    //ajout dans la liste la position du déplacement d'une case vers l'avant
 
-            if (position.getRow() == board.getInitialPawnRow(color) && board.isFree(forward.next(direction))) { //vérifie si les 2 cases devant lui sont vides et qu'il se trouve a sa position initial
-                myList.add(forward.next(direction));    //ajout dans la liste les positions du déplacement de 2 cases vers l'avant
+                if (position.getRow() == board.getInitialPawnRow(color) && board.isFree(forward.next(direction))) { //vérifie si les 2 cases devant lui sont vides et qu'il se trouve a sa position initial
+                    myList.add(forward.next(direction));    //ajout dans la liste les positions du déplacement de 2 cases vers l'avant
+                }
             }
+        } catch (IllegalArgumentException e) {
         }
-        }catch (IllegalArgumentException e) {
-        }
-        try {
+        try { //catch l'exception si la position n'existe pas sur le chessboard et verifier la condition suivante
             if (board.containsOppositeColor(diagonalE, color)) {    //vérifie si la diagonale East du pion contient un pion de couleur opposé
                 myList.add(diagonalE);  //ajout dans la liste, la position du déplacement de la case vers la diagonale East
             }
         } catch (IllegalArgumentException e) {
         }
-        
-         try {
-        if (board.containsOppositeColor(diagonalW, color)) {    //vérifie si la diagonale West du pion contient un pion de couleur opposé
-            myList.add(diagonalW);  //ajout dans la liste, la position du déplacement de la case vers la diagonale West
-        }
+
+        try { //catch l'exception si la position n'existe pas sur le chessboard
+            if (board.containsOppositeColor(diagonalW, color)) {    //vérifie si la diagonale West du pion contient un pion de couleur opposé
+                myList.add(diagonalW);  //ajout dans la liste, la position du déplacement de la case vers la diagonale West
+            }
         } catch (IllegalArgumentException e) {
         }
         return myList;

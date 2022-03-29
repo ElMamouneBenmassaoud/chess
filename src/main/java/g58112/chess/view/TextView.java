@@ -4,6 +4,7 @@
  */
 package g58112.chess.view;
 
+import g58112.chess.model.Color;
 import g58112.chess.model.Model;
 import g58112.chess.model.Player;
 import g58112.chess.model.Position;
@@ -24,10 +25,12 @@ public class TextView implements View {
     public void displayTitle() {
         String bienvenue ="Bienvenue au jeu des échecs !";
         System.out.println(bienvenue);
+        System.out.println("_".repeat(bienvenue.length()));
+        String bienvenueJoueurs = "Bienvenue aux deux joueurs.";
+        System.out.println(bienvenueJoueurs);
         System.out.println("-".repeat(bienvenue.length()));
-        System.out.println("Bienvenue aux deux joueurs.");
     }
-
+    
     @Override
     public void displayBoard() {
     }
@@ -43,6 +46,11 @@ public class TextView implements View {
 
     @Override
     public void displayPlayer() {
+        if(model.getCurrentPlayer().getColor().equals(Color.BLACK)){
+            System.out.println("c'est au tour du joueur BLACK de jouer");
+        }else{
+            System.out.println("c'est au tour du joueur WHITE de jouer");
+        }
     }
 
     @Override
