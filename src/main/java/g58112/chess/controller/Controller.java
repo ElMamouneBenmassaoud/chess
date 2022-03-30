@@ -19,35 +19,45 @@ public class Controller {
 
     /**
      * initializes the controller with the view and model passed as parameters.
+     *
      * @param model Le model
-     * @param view  La vue
+     * @param view La vue
      */
     public Controller(Model model, View view) {
         this.view = view;
         this.model = model;
     }
-    
+
     /**
      * This method drives the game.
      */
-    public void play(){
+    public void play() {
         boolean gameIsOver = false;
         view.displayTitle();
         model.start();
-        
-        while (!gameIsOver){
+
+        while (!gameIsOver) {
             view.displayBoard();
-            view.displayPlayer();
-            System.out.println("La position de départ:");
-            Position oldPos = view.askPosition();
-            System.out.println("La position d'arriver:");
-            Position newPos = view.askPosition();
-            model.movePiecePosition(oldPos, newPos);
-            if(model.isGameOver()){
-                gameIsOver = true;
-            }
+
+            movePiece();
+
+            gameIsOver = model.isGameOver();
         }
         view.displayWinner();
     }
 
+    private void movePiece() {
+        try {
+            view.displayPlayer();
+
+            System.out.println("La position de départ:");
+            Position oldPos = view.askPosition();
+            System.out.println("La position d'arrivée:");
+            Position newPos = view.askPosition();
+            model.movePiecePosition(oldPos, newPos);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            movePiece();
+        }
+    }
 }
