@@ -4,7 +4,6 @@
  */
 package g58112.chess.view;
 
-import g58112.chess.model.Board;
 import g58112.chess.model.Color;
 import g58112.chess.model.Model;
 import g58112.chess.model.Piece;
@@ -45,8 +44,7 @@ public class TextView implements View {
         System.out.println("----------------------------------------------------");
         for (int i = 8; 0 < i; i--) {
             System.out.print(i + "  |"); //affiche les numeros des lignes
-
-            //affiche les differentes cases (occupé par pion blanc, noir 
+            //affiche les differentes cases (occupé par pion blanc, noir) 
             //ou pas occupé 
             for (int j = 0; j < 8; j++) {
                 if (col == 8) {
@@ -54,14 +52,14 @@ public class TextView implements View {
                     row--;
                 }
                 Position pos = new Position(row, col);
-                Piece pe = model.getPiece(pos);
-                if (pe == null) {
+                Piece pawn = model.getPiece(pos);
+                if (pawn == null) {
                     System.out.print("     |");  //case libre 
                 } else {
-                    if (pe.getColor().equals(Color.BLACK)) {
-                        System.out.print(" PB  |");    // case avec pion noir
+                    if (pawn.getColor().equals(Color.BLACK)) {
+                        System.out.print(" PN  |");    // case avec pion noir
                     } else {
-                        System.out.print(" PW  |");   // case avec pion blanc
+                        System.out.print(" PB  |");   // case avec pion blanc
                     }
                 }
                 col++;
