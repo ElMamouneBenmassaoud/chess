@@ -4,8 +4,8 @@
  */
 package g58112.chess.view;
 
-import g58112.chess.model.Board;
 import g58112.chess.model.Color;
+import g58112.chess.model.Game;
 import g58112.chess.model.Model;
 import g58112.chess.model.Piece;
 import g58112.chess.model.Player;
@@ -17,29 +17,18 @@ import java.util.Scanner;
  *
  * @author mamou
  */
-public class TextView implements View {
+public class testMain {
 
-    private Model model;
-
-    public TextView(Model model) {
-        this.model = model;
-    }
-
-    @Override
-    public void displayTitle() {
-
+    public static void main(String[] args) {
+        //askPosition();
         String bienvenue = "CHESS";
-        System.out.print("-".repeat(22) + "[");
+        System.out.print("-".repeat(22)+"[");
         System.out.print(bienvenue);
-        System.out.println("]" + "-".repeat(22));
-        String bienvenueJoueurs = " ".repeat(11) + "Bienvenue aux deux joueurs.";
+        System.out.println("]"+"-".repeat(22));
+        String bienvenueJoueurs = " ".repeat(11)+"Bienvenue aux deux joueurs.";
         System.out.println("_".repeat(51));
         System.out.println(bienvenueJoueurs);
         System.out.println("_".repeat(51));
-    }
-
-    @Override
-    public void displayBoard() {
         int row = 7;
         int col = 0;
         System.out.println("----------------------------------------------------");
@@ -54,6 +43,7 @@ public class TextView implements View {
                     row--;
                 }
                 Position pos = new Position(row, col);
+                Model model = new Game();
                 Piece pe = model.getPiece(pos);
                 if (pe == null) {
                     System.out.print("     |");  //case libre 
@@ -70,35 +60,21 @@ public class TextView implements View {
             System.out.println("----------------------------------------------------");
         }
         System.out.println("      a     b     c     d     e     f     g     h");
+    
+
     }
 
-    @Override
-    public void displayWinner() {
-        if (model.isGameOver()) {
-            Player winner = model.getOppositePlayer();
-            System.out.println("Bien joué !");
-            System.out.println(winner + "a gagné la partie !");
-        }
-    }
-
-    @Override
-    public void displayPlayer() {
-        if (model.getCurrentPlayer().getColor().equals(Color.BLACK)) {
-            System.out.println("c'est au tour du joueur BLACK de jouer:");
-        } else {
-            System.out.println("c'est au tour du joueur WHITE de jouer:");
-        }
-    }
-
-    @Override
-    public Position askPosition() {
-        int row = lireEntierRange("Veuillez saisir le numéro de la ligne (entre 1 et 8)", 1, 8, "Le numéro de la ligne n'est pas valide") - 1;
+    public static Position askPosition() {
+        
+        int row = lireEntierRange("Veuillez saisir le numéro de la ligne (entre 1 et 8):", 1, 8, "Le numéro de la ligne n'est pas valide") - 1;
         int column = stringToInt();
         Position newPos = new Position(row, column);
+        System.out.println(row);
+        System.out.println(column);
         return newPos;
     }
 
-    private int lireEntier(String message) {
+    private static int lireEntier(String message) {
         Scanner input = new Scanner(System.in);
         System.out.println(message);
         while (!input.hasNextInt()) {
@@ -109,7 +85,7 @@ public class TextView implements View {
         return input.nextInt();
     }
 
-    private int lireEntierRange(String message, int min, int max, String exception) {
+    private static int lireEntierRange(String message, int min, int max, String exception) {
         int input = 0;
         do {
             input = lireEntier(message);
@@ -120,7 +96,7 @@ public class TextView implements View {
         return input;
     }
 
-    private String robusteString() {
+    private static String robusteString() {
         Scanner clavier = new Scanner(System.in);
         List<String> listeChar = List.of("a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H");
         System.out.println("Veuillez saisir la lettre de la colonne (a à h)");
@@ -134,7 +110,7 @@ public class TextView implements View {
         return column;
     }
 
-    private int stringToInt() {
+    private static int stringToInt() {
         int column;
         switch (robusteString()) {
             case "A", "a" ->
@@ -158,11 +134,6 @@ public class TextView implements View {
             }
         }
         return column;
-    }
-
-    @Override
-    public void displayError(String message) {
-        System.out.println(message);
     }
 
 }
