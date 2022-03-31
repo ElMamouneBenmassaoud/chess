@@ -55,7 +55,9 @@ public class Player {
         }
         return true;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Player{" + "color=" + color + '}';
+    }    
 }
