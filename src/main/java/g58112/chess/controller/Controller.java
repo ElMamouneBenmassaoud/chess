@@ -56,7 +56,7 @@ public class Controller {
             Position newPos = view.askPosition();
             model.movePiecePosition(oldPos, newPos);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            view.displayError(e.getMessage());
             movePiece();
         }
     }
