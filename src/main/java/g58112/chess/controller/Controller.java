@@ -13,7 +13,7 @@ import g58112.chess.view.View;
  * @author mamou
  */
 public class Controller {
-
+    
     private View view;
     private Model model;
 
@@ -35,21 +35,21 @@ public class Controller {
         boolean gameIsOver = false;
         view.displayTitle();
         model.start();
-
+        
         while (!gameIsOver) {
             view.displayBoard();
-
+            
             movePiece();
-
+            
             gameIsOver = model.isGameOver();
         }
         view.displayWinner();
     }
-
+    
     private void movePiece() {
         try {
             view.displayPlayer();
-
+            
             System.out.println("La position de départ:");
             Position oldPos = view.askPosition();
             System.out.println("La position d'arrivée:");

@@ -92,7 +92,7 @@ public class Game implements Model {
     public boolean isGameOver() {
         List<Position> currentPos = board.getPositionOccupiedBy(currentPlayer);
         int i = 0;
-        while (getPossibleMoves(currentPos.get(i)).isEmpty() && i < currentPos.size()) {
+        while (i < currentPos.size() && getPossibleMoves(currentPos.get(i)).isEmpty()) {
             i++;
         }
         return i == currentPos.size();
