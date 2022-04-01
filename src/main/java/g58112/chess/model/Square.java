@@ -17,10 +17,11 @@ package g58112.chess.model;
 public class Square {
 
     private Piece piece;
-    
+
     /**
      * the constructor initializes a piece on the square
-     * @param piece 
+     *
+     * @param piece
      */
     public Square(Piece piece) {
         this.piece = piece;
@@ -28,7 +29,8 @@ public class Square {
 
     /**
      * allows you to get the piece in the square
-     * @return 
+     *
+     * @return
      */
     public Piece getPiece() {
         return piece;
@@ -36,7 +38,8 @@ public class Square {
 
     /**
      * allows you to set the piece in the square
-     * @param piece 
+     *
+     * @param piece
      */
     public void setPiece(Piece piece) {
         this.piece = piece;
@@ -44,7 +47,8 @@ public class Square {
 
     /**
      * check if the square is free or not
-     * @return true for isFree and false for isNotFree 
+     *
+     * @return true for isFree and false for isNotFree
      */
     public boolean isFree() {
         boolean isFree = false;

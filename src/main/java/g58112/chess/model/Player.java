@@ -9,23 +9,26 @@ import java.util.Objects;
 
 /**
  * this class represent a player and his color
+ *
  * @author g58112
  */
 public class Player {
+
     private Color color;
 
     /**
      * The constructor will initialize a new player of given color
-     * @param color colorplayer's  
+     *
+     * @param color colorplayer's
      */
     public Player(Color color) {
         this.color = color;
     }
 
-    
     /**
      * the color of the player that matches the color of his pieces.
-     * @return the color 
+     *
+     * @return the color
      */
     public Color getColor() {
         return color;
@@ -59,5 +62,5 @@ public class Player {
     @Override
     public String toString() {
         return "Player{" + "color=" + color + '}';
-    }    
+    }
 }

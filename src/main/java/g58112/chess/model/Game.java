@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This one gathers the elements necessary for the game, and implements the
+ * different stages of the game. It is the access point for the view and the
+ * controller.
  *
  * @author mamou
  */
@@ -18,6 +21,10 @@ public class Game implements Model {
     private Player black;
     private Player currentPlayer;
 
+    /**
+     * It simply creates a new white player, a new black player and a new empty
+     * board
+     */
     public Game() {
         white = new Player(Color.WHITE);
         black = new Player(Color.BLACK);
@@ -81,7 +88,7 @@ public class Game implements Model {
             throw new IllegalArgumentException("La position jouée n'est pas valide");
         }
 
-        if(!isGameOver()) {
+        if (!isGameOver()) {
             board.setPiece(getPiece(oldPos), newPos);
             board.dropPiece(oldPos);
             currentPlayer = getOppositePlayer();

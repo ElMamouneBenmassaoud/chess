@@ -13,19 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author mamou
  */
 public class GameTest {
-    
-    public GameTest() {
-    }
 
-    /**
-     * Test of start method, of class Game.
-     */
-    @Test
-    public void testStart() {
-        System.out.println("start");
-        Game instance = new Game();
-        instance.start();
-        
+    public GameTest() {
     }
 
     /**
@@ -39,7 +28,7 @@ public class GameTest {
         game.start();
         Piece expResult = new Piece(Color.WHITE);
         Piece result = game.getPiece(pos);
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -53,7 +42,7 @@ public class GameTest {
         Player expResult = new Player(Color.WHITE);
         Player result = instance.getCurrentPlayer();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -66,7 +55,7 @@ public class GameTest {
         instance.start();
         Player expResult = new Player(Color.BLACK);
         Player result = instance.getOppositePlayer();
-        assertEquals(expResult, result);      
+        assertEquals(expResult, result);
     }
 
     /**
@@ -80,9 +69,8 @@ public class GameTest {
         instance.start();
         boolean expResult = false;
         boolean result = instance.isCurrentPlayerPosition(pos);
-        assertEquals(expResult, result);       
+        assertEquals(expResult, result);
     }
-
 
     /**
      * Test of isGameOver method, of class Game.
@@ -94,7 +82,7 @@ public class GameTest {
         instance.start();
         boolean expResult = false;
         boolean result = instance.isGameOver();
-        assertEquals(expResult, result);        
+        assertEquals(expResult, result);
     }
 
     /**
@@ -107,19 +95,19 @@ public class GameTest {
         Game instance = new Game();
         instance.start();
         List<Position> expResult = List.of(
-                new Position(2, 6),  
-                new Position(3, 6)  
+                new Position(2, 6),
+                new Position(3, 6)
         );
         List<Position> result = instance.getPossibleMoves(position);
         assertEqualsIgnoringOrder(expResult, result);
-        
+
     }
-    
+
     private void assertEqualsIgnoringOrder(List<Position> expected, List<Position> actual) {
         assertEquals(expected.size(), actual.size());
         assertTrue(actual.containsAll(expected));
         assertTrue(expected.containsAll(actual));
 
     }
-    
+
 }

@@ -10,6 +10,7 @@ import g58112.chess.model.Model;
 import g58112.chess.view.TextView;
 
 /**
+ * this class is used to play the game
  *
  * @author mamou
  */

@@ -25,7 +25,7 @@ public class Board {
         squares = new Square[8][8];
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[0].length; j++) {
-                squares[i][j]= new Square(null);
+                squares[i][j] = new Square(null);
             }
         }
     }
@@ -124,18 +124,21 @@ public class Board {
         if (!contains(pos)) {
             throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
         }
-        
-        return squares[pos.getRow()][pos.getColumn()].isFree();    
+
+        return squares[pos.getRow()][pos.getColumn()].isFree();
     }
 
     /**
-     * This method allows you to check if a square is occupied by an opponent's piece. 
+     * This method allows you to check if a square is occupied by an opponent's
+     * piece.
+     *
      * @throw an IllegalArgumentException if the given position is not on the
      * chessboard
-     * @param pos the position of the piece 
+     * @param pos the position of the piece
      * @param col the colour of a piece that you want to compare with another
-     * @return A boolean that checks if the cell whose position is passed as a parameter
-     * contains a piece of the opposite colour to the one passed as a parameter
+     * @return A boolean that checks if the cell whose position is passed as a
+     * parameter contains a piece of the opposite colour to the one passed as a
+     * parameter
      */
     public boolean containsOppositeColor(Position pos, Color col) {
         if (!contains(pos)) {
@@ -147,22 +150,24 @@ public class Board {
         }
         return opposite;
     }
-    
+
     /**
-     * this method creates a list of all the positions occupied by the player received in parameter
+     * this method creates a list of all the positions occupied by the player
+     * received in parameter
+     *
      * @param player is the player given
      * @return a list of all positions occupied by the given
      */
-    public List<Position> getPositionOccupiedBy(Player player){
+    public List<Position> getPositionOccupiedBy(Player player) {
         List<Position> liste = new ArrayList();
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[0].length; j++) {
-               Position pos = new Position(i,j);              
-               if(!isFree(pos) && player.getColor()== squares[i][j].getPiece().getColor()){
-                  liste.add(pos);
-               }
-            }       
+                Position pos = new Position(i, j);
+                if (!isFree(pos) && player.getColor() == squares[i][j].getPiece().getColor()) {
+                    liste.add(pos);
+                }
+            }
         }
         return liste;
-    }     
+    }
 }

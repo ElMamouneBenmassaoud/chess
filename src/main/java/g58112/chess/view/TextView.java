@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * this class provides us with the game displays
  *
  * @author mamou
  */
@@ -96,6 +97,12 @@ public class TextView implements View {
         return newPos;
     }
 
+    /**
+     * this method checks whether the keyboard entry is an integer or not
+     *
+     * @param message the message you receive before entering the keyboard
+     * @return the value receipt
+     */
     private int lireEntier(String message) {
         Scanner input = new Scanner(System.in);
         System.out.println(message);
@@ -107,6 +114,15 @@ public class TextView implements View {
         return input.nextInt();
     }
 
+    /**
+     * read an integer between two bounds
+     *
+     * @param message the message you receive before entering the keyboard
+     * @param min the minumum value
+     * @param max the maximum value
+     * @param exception the error message
+     * @return the value receipt
+     */
     private int lireEntierRange(String message, int min, int max, String exception) {
         int input = 0;
         do {
@@ -118,6 +134,11 @@ public class TextView implements View {
         return input;
     }
 
+    /**
+     * receive a letter that is included in the list
+     *
+     * @return the letter receipt
+     */
     private String robusteString() {
         Scanner clavier = new Scanner(System.in);
         List<String> listeChar = List.of("a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H");
@@ -132,6 +153,11 @@ public class TextView implements View {
         return column;
     }
 
+    /**
+     * change the letter to an integer
+     *
+     * @return the integer
+     */
     private int stringToInt() {
         int column;
         switch (robusteString()) {

@@ -46,7 +46,7 @@ public class PieceTest {
     //initial position du pion
     @Test
     public void white_testGetPossibleMovesForwardOppositePawnInitial1() {
-        //pion adverse en face de moi et trouver un nom au test !!!!!!!
+        //pion adverse en face de moi
         Position position = new Position(1, 5);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -62,7 +62,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesForwardOppositePawnInitial2() {
-        //pion en face de moi mais avec une case libre qui se trouve entre nous et trouver un nom au test !!!!!!!
+        //pion en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(1, 1);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -81,7 +81,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesDiagonalsOppositePawnInitial() {
-        //pion adverses en diagonal des 2 cotés et revoir le nom au test !!!!!!!
+        //pion adverses en diagonal des 2 cotés
         Position position = new Position(1, 4);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -107,7 +107,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesForwardPawnInitialOfSamePlayer() {
-        //pion de meme couleur en face de moi et revoir le nom au test !!!!!!!
+        //pion de meme couleur en face de moi
         Position position = new Position(1, 3);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -125,7 +125,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesForwardPawnInitialOfSamePlayer2() {
-        //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous et trouver un nom au test !!!!!!!
+        //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(1, 6);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -143,7 +143,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesDiagonalsPawnInitialOfSamePlayer() {
-        //pion adverses en diagonal des 2 cotés et revoir le nom au test !!!!!!!
+        //pion adverses en diagonal des 2 cotés
         Position position = new Position(1, 3);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -168,7 +168,7 @@ public class PieceTest {
     //position du pion au milieu du board
     @Test
     public void white_testGetPossibleMovesForwardOppositePawn1() {
-        //pion adverse en face de moi et trouver un nom au test !!!!!!!
+        //pion adverse en face de moi
         Position position = new Position(2, 1);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -184,7 +184,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesForwardOppositePawn2() {
-        //pion en face de moi mais avec une case libre qui se trouve entre nous et trouver un nom au test !!!!!!!
+        //pion en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(2, 1);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -203,7 +203,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesDiagonalsOppositePawn() {
-        //pion adverses en diagonal des 2 cotés et revoir le nom au test !!!!!!!
+        //pion adverses en diagonal des 2 cotés
         Position position = new Position(2, 2);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -228,7 +228,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesForwardPawnOfSamePlayer() {
-        //pion de meme couleur en face de moi et revoir le nom au test !!!!!!!
+        //pion de meme couleur en face de moi
         Position position = new Position(2, 4);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -246,7 +246,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesForwardPawnOfSamePlayer2() {
-        //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous et trouver un nom au test !!!!!!!
+        //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(2, 4);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -264,7 +264,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesDiagonalsPawnOfSamePlayer() {
-        //pion adverses en diagonal des 2 cotés et revoir le nom au test !!!!!!!
+        //pion adverses en diagonal des 2 cotés
         Position position = new Position(2, 6);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -287,7 +287,7 @@ public class PieceTest {
 
     @Test
     public void white_testGetPossibleMovesEdgePawn() {
-        //pion se trouve a l'extremite et revoir le nom au test !!!!!!!
+        //pion se trouve a l'extremite
         Position position = new Position(7, 0);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -297,10 +297,10 @@ public class PieceTest {
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-    
+
     @Test
     public void white_testGetPossibleMovesLeftEdgePawn() {
-        //pion se trouve a l'extremite gauche et revoir le nom au test !!!!!!!
+        //pion se trouve a l'extremite gauche
         Position position = new Position(1, 0);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -313,10 +313,10 @@ public class PieceTest {
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-    
+
     @Test
     public void white_testGetPossibleMovesRightEdgePawn() {
-        //pion se trouve a l'extremite gauche et revoir le nom au test !!!!!!!
+        //pion se trouve a l'extremite gauche
         Position position = new Position(1, 0);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
@@ -333,7 +333,7 @@ public class PieceTest {
     //initial position du pion noir
     @Test
     public void black_testGetPossibleMovesForwardOppositePawnInitial1() {
-        //pion adverse en face de moi et trouver un nom au test !!!!!!!
+        //pion adverse en face de moi
         Position position = new Position(6, 2);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -349,7 +349,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesForwardOppositePawnInitial2() {
-        //pion en face de moi mais avec une case libre qui se trouve entre nous et trouver un nom au test !!!!!!!
+        //pion en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(6, 1);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -368,7 +368,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesDiagonalsOppositePawnInitial() {
-        //pion adverses en diagonal des 2 cotés et revoir le nom au test !!!!!!!
+        //pion adverses en diagonal des 2 cotés
         Position position = new Position(6, 3);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -394,7 +394,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesForwardPawnInitialOfSamePlayer() {
-        //pion de meme couleur en face de moi et revoir le nom au test !!!!!!!
+        //pion de meme couleur en face de moi
         Position position = new Position(6, 2);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -412,7 +412,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesForwardPawnInitialOfSamePlayer2() {
-        //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous et trouver un nom au test !!!!!!!
+        //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(6, 3);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -430,7 +430,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesDiagonalsPawnInitialOfSamePlayer() {
-        //pion adverses en diagonal des 2 cotés et revoir le nom au test !!!!!!!
+        //pion adverses en diagonal des 2 cotés
         Position position = new Position(6, 3);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -455,7 +455,7 @@ public class PieceTest {
     //position du pion au milieu du board
     @Test
     public void black_testGetPossibleMovesForwardOppositePawn1() {
-        //pion adverse en face de moi et trouver un nom au test !!!!!!!
+        //pion adverse en face de moi
         Position position = new Position(5, 3);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -471,7 +471,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesForwardOppositePawn2() {
-        //pion en face de moi mais avec une case libre qui se trouve entre nous et trouver un nom au test !!!!!!!
+        //pion en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(5, 2);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -490,7 +490,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesDiagonalsOppositePawn() {
-        //pion adverses en diagonal des 2 cotés et revoir le nom au test !!!!!!!
+        //pion adverses en diagonal des 2 cotés
         Position position = new Position(5, 2);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -515,7 +515,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesForwardPawnOfSamePlayer() {
-        //pion de meme couleur en face de moi et revoir le nom au test !!!!!!!
+        //pion de meme couleur en face de moi
         Position position = new Position(5, 3);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -533,7 +533,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesForwardPawnOfSamePlayer2() {
-        //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous et trouver un nom au test !!!!!!!
+        //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(5, 2);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -551,7 +551,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesDiagonalsPawnOfSamePlayer() {
-        //pion adverses en diagonal des 2 cotés et revoir le nom au test !!!!!!!
+        //pion adverses en diagonal des 2 cotés
         Position position = new Position(5, 3);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -574,7 +574,7 @@ public class PieceTest {
 
     @Test
     public void black_testGetPossibleMovesEdgePawn() {
-        //pion se trouve a l'extremite et revoir le nom au test !!!!!!!
+        //pion se trouve a l'extremite
         Position position = new Position(0, 1);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -584,10 +584,10 @@ public class PieceTest {
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-    
+
     @Test
     public void black_testGetPossibleMovesLeftEdgePawn() {
-        //pion noir se trouve a l'extremite gauche et revoir le nom au test !!!!!!!
+        //pion noir se trouve a l'extremite gauche
         Position position = new Position(6, 0);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
@@ -600,15 +600,14 @@ public class PieceTest {
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-    
+
     @Test
     public void white_testGetPossibleMovesRightEdgePawn_eat() {
-        //pion noir se trouve a l'extremite gauche et revoir le nom au test !!!!!!!
+        //pion noir se trouve a l'extremite gauche
         Position position = new Position(1, 7);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
 
-        
         Position position2 = new Position(2, 6);
         Piece piece2 = new Piece(Color.BLACK);
         board.setPiece(piece2, position2);
