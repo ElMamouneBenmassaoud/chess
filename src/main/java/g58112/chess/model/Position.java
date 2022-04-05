@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package g58112.chess.model;
 
 /**
@@ -11,8 +7,8 @@ package g58112.chess.model;
  */
 public class Position {
 
-    private int row;    //line
-    private int column; //column
+    private final int row;    //line
+    private final int column; //column
 
     /**
      * the constructor allows to define the row and the column of the position

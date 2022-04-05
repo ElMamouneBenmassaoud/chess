@@ -1,49 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package g58112.chess.model;
+package g58112.chess.model.pieces;
 
+import g58112.chess.model.Board;
+import g58112.chess.model.Color;
+import g58112.chess.model.Direction;
+import g58112.chess.model.Position;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
- * the Piece class will represent a piece and its color
+ * the Pawn class will represent a pawn and its color
  *
  * @author g58112
  */
-public class Piece {
-
-    private Color color;
+public class Pawn extends Piece {
 
     /**
-     * The constructor initializes the piece with the given color
+     * The constructor initializes the pawn with the given color
      *
-     * @param color the color of the piece
+     * @param color the color of the pawn
      */
-    public Piece(Color color) {
-        this.color = color;
+    public Pawn(Color color) {
+        super(color);
     }
 
-    /**
-     * this getter allows to get the color provided for the piece
-     *
-     * @return the color of the piece
-     */
-    public Color getColor() {
-        return color;
-    }
-
-    /**
-     * This method provides us with the list of possible positions for a piece
-     * located in a given position on the chessboard.
-     *
-     * @param position the position of the piece
-     * @param board the chessboard on which it plays
-     * @return the list of possible positions for a piece
-     */
+    @Override
     public List<Position> getPossibleMoves(Position position, Board board) {
         List<Position> myList = new ArrayList();
 
@@ -53,7 +33,7 @@ public class Piece {
         Position forward;
         Position diagonalE;
         Position diagonalW;
-        if (this.color.equals(Color.WHITE)) {   //Vérifier la couleur du pion (Blanc ou Noir)
+        if (getColor().equals(Color.WHITE)) {   //Vérifier la couleur du pion (Blanc ou Noir)
             direction = Direction.N;    //direction nord
             directionDiagonalE = Direction.NE;  //direction nord est
             directionDiagonalW = Direction.NW;  //direction nord west
@@ -76,21 +56,21 @@ public class Piece {
             if (board.isFree(forward)) {    //vérifie si la case devant lui est vide
                 myList.add(forward);    //ajout dans la liste la position du déplacement d'une case vers l'avant
 
-                if (position.getRow() == board.getInitialPawnRow(color) && board.isFree(forward.next(direction))) { //vérifie si les 2 cases devant lui sont vides et qu'il se trouve a sa position initial
+                if (position.getRow() == board.getInitialPawnRow(getColor()) && board.isFree(forward.next(direction))) { //vérifie si les 2 cases devant lui sont vides et qu'il se trouve a sa position initial
                     myList.add(forward.next(direction));    //ajout dans la liste les positions du déplacement de 2 cases vers l'avant
                 }
             }
         } catch (IllegalArgumentException e) {
         }
         try { //catch l'exception si la position n'existe pas sur le chessboard et verifier la condition suivante
-            if (board.containsOppositeColor(diagonalE, color)) {    //vérifie si la diagonale East du pion contient un pion de couleur opposé
+            if (board.containsOppositeColor(diagonalE, getColor())) {    //vérifie si la diagonale East du pion contient un pion de couleur opposé
                 myList.add(diagonalE);  //ajout dans la liste, la position du déplacement de la case vers la diagonale East
             }
         } catch (IllegalArgumentException e) {
         }
 
         try { //catch l'exception si la position n'existe pas sur le chessboard
-            if (board.containsOppositeColor(diagonalW, color)) {    //vérifie si la diagonale West du pion contient un pion de couleur opposé
+            if (board.containsOppositeColor(diagonalW, getColor())) {    //vérifie si la diagonale West du pion contient un pion de couleur opposé
                 myList.add(diagonalW);  //ajout dans la liste, la position du déplacement de la case vers la diagonale West
             }
         } catch (IllegalArgumentException e) {
@@ -98,29 +78,39 @@ public class Piece {
         return myList;
     }
 
+    /**
+     * This method provides us with the list of the positions on which a pawn
+     * located in a given position on the chessboard can capture an opposite piece.
+     *
+     * @param position the position of the pawn
+     * @param board the chessboard on which it plays
+     * @return the list of the positions on which the pawn can capture an opposite piece.
+     */
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.color);
-        return hash;
+    public List<Position> getCapturePositions(Position position, Board board){
+        List<Position> capturePositions = new ArrayList();
+        List<Position> possibleMoves = getPossibleMoves(position, board);
+        
+        for (Position pos : possibleMoves) {
+            boolean canTake = false;
+            
+            Position posNE = position.next(Direction.NE);
+            Position posNW = position.next(Direction.NW);
+            Position posSE = position.next(Direction.SE);
+            Position posSW = position.next(Direction.SW);
+            
+            if (board.containsOppositeColor(pos, getColor())) {
+                if (getColor() == Color.WHITE && ((board.contains(posNE) && pos.equals(posNE)) || (board.contains(posNW) && pos.equals(posNW)))) {
+                    canTake = true;
+                }
+                if (getColor() == Color.BLACK && ((board.contains(posSE) && pos.equals(posSE)) || (board.contains(posSW) && pos.equals(posSW)))) {
+                    canTake = true;
+                }
+                
+                if (canTake) capturePositions.add(pos);
+            }
+        }
+        
+        return capturePositions;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Piece other = (Piece) obj;
-        if (this.color != other.color) {
-            return false;
-        }
-        return true;
-    }
-
 }

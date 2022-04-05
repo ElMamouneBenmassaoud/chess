@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package g58112.chess.model;
 
+import g58112.chess.model.pieces.Pawn;
+import g58112.chess.model.pieces.Piece;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +24,7 @@ public class GameTest {
         Position pos = new Position(1, 5);
         Game game = new Game();
         game.start();
-        Piece expResult = new Piece(Color.WHITE);
+        Piece expResult = new Pawn(Color.WHITE);
         Piece result = game.getPiece(pos);
         assertEquals(expResult, result);
     }

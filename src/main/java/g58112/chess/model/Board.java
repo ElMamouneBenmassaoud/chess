@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package g58112.chess.model;
 
+import g58112.chess.model.pieces.Piece;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +11,7 @@ import java.util.List;
  */
 public class Board {
 
-    private Square[][] squares;
+    private final Square[][] squares;
 
     /**
      * The constructor initializes a new board of 8 times 8 squares (not

@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package g58112.chess.model;
 
-import java.util.ArrayList;
+import g58112.chess.model.pieces.Pawn;
+import g58112.chess.model.pieces.Piece;
 import java.util.List;
 
 /**
@@ -16,9 +13,9 @@ import java.util.List;
  */
 public class Game implements Model {
 
-    private Board board;
-    private Player white;
-    private Player black;
+    private final Board board;
+    private final Player white;
+    private final Player black;
     private Player currentPlayer;
 
     /**
@@ -34,10 +31,10 @@ public class Game implements Model {
     @Override
     public void start() {
         for (int i = 0; i < 8; i++) {
-            board.setPiece(new Piece(Color.WHITE), new Position(board.getInitialPawnRow(Color.WHITE), i));
+            board.setPiece(new Pawn(Color.WHITE), new Position(board.getInitialPawnRow(Color.WHITE), i));
         }
         for (int j = 0; j < 8; j++) {
-            board.setPiece(new Piece(Color.BLACK), new Position(board.getInitialPawnRow(Color.BLACK), j));
+            board.setPiece(new Pawn(Color.BLACK), new Position(board.getInitialPawnRow(Color.BLACK), j));
         }
         currentPlayer = white;
     }

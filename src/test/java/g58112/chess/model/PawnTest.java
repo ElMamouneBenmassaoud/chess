@@ -1,9 +1,9 @@
 package g58112.chess.model;
 
-import java.util.ArrayList;
+import g58112.chess.model.pieces.Pawn;
+import g58112.chess.model.pieces.Piece;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author srexhep
  */
-public class PieceTest {
+public class PawnTest {
 
     Board board;
 
-    public PieceTest() {
+    public PawnTest() {
     }
 
     @BeforeEach
@@ -26,7 +26,7 @@ public class PieceTest {
     @Test
     public void testGetPossibleMovesP() {
         Position position = new Position(1, 1);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         List<Position> expected = List.of(
@@ -48,11 +48,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesForwardOppositePawnInitial1() {
         //pion adverse en face de moi
         Position position = new Position(1, 5);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(2, 5);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of();
         List<Position> positions = piece.getPossibleMoves(position, board);
@@ -64,11 +64,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesForwardOppositePawnInitial2() {
         //pion en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(1, 1);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(3, 1);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(2, 1)
@@ -83,15 +83,15 @@ public class PieceTest {
     public void white_testGetPossibleMovesDiagonalsOppositePawnInitial() {
         //pion adverses en diagonal des 2 cotés
         Position position = new Position(1, 4);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(2, 3);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
 
         Position position3 = new Position(2, 5);
-        Piece piece3 = new Piece(Color.BLACK);
+        Piece piece3 = new Pawn(Color.BLACK);
         board.setPiece(piece3, position3);
         List<Position> expected = List.of(
                 new Position(2, 3),
@@ -109,11 +109,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesForwardPawnInitialOfSamePlayer() {
         //pion de meme couleur en face de moi
         Position position = new Position(1, 3);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(2, 3);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
 
         List<Position> expected = List.of();
@@ -127,11 +127,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesForwardPawnInitialOfSamePlayer2() {
         //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(1, 6);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(3, 6);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(2, 6)
@@ -145,15 +145,15 @@ public class PieceTest {
     public void white_testGetPossibleMovesDiagonalsPawnInitialOfSamePlayer() {
         //pion adverses en diagonal des 2 cotés
         Position position = new Position(1, 3);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(2, 2);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
 
         Position position3 = new Position(2, 4);
-        Piece piece3 = new Piece(Color.WHITE);
+        Piece piece3 = new Pawn(Color.WHITE);
         board.setPiece(piece3, position3);
 
         List<Position> expected = List.of(
@@ -170,11 +170,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesForwardOppositePawn1() {
         //pion adverse en face de moi
         Position position = new Position(2, 1);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(3, 1);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of();
         List<Position> positions = piece.getPossibleMoves(position, board);
@@ -186,11 +186,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesForwardOppositePawn2() {
         //pion en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(2, 1);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(4, 2);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(3, 1)
@@ -205,15 +205,15 @@ public class PieceTest {
     public void white_testGetPossibleMovesDiagonalsOppositePawn() {
         //pion adverses en diagonal des 2 cotés
         Position position = new Position(2, 2);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(3, 1);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
 
         Position position3 = new Position(3, 3);
-        Piece piece3 = new Piece(Color.BLACK);
+        Piece piece3 = new Pawn(Color.BLACK);
         board.setPiece(piece3, position3);
         List<Position> expected = List.of(
                 new Position(3, 3),
@@ -230,11 +230,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesForwardPawnOfSamePlayer() {
         //pion de meme couleur en face de moi
         Position position = new Position(2, 4);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(3, 4);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
 
         List<Position> expected = List.of();
@@ -248,11 +248,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesForwardPawnOfSamePlayer2() {
         //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(2, 4);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(4, 4);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(3, 4)
@@ -266,15 +266,15 @@ public class PieceTest {
     public void white_testGetPossibleMovesDiagonalsPawnOfSamePlayer() {
         //pion adverses en diagonal des 2 cotés
         Position position = new Position(2, 6);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(3, 5);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
 
         Position position3 = new Position(3, 7);
-        Piece piece3 = new Piece(Color.WHITE);
+        Piece piece3 = new Pawn(Color.WHITE);
         board.setPiece(piece3, position3);
 
         List<Position> expected = List.of(
@@ -289,7 +289,7 @@ public class PieceTest {
     public void white_testGetPossibleMovesEdgePawn() {
         //pion se trouve a l'extremite
         Position position = new Position(7, 0);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         List<Position> expected = List.of();
@@ -302,7 +302,7 @@ public class PieceTest {
     public void white_testGetPossibleMovesLeftEdgePawn() {
         //pion se trouve a l'extremite gauche
         Position position = new Position(1, 0);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         List<Position> expected = List.of(
@@ -318,7 +318,7 @@ public class PieceTest {
     public void white_testGetPossibleMovesRightEdgePawn() {
         //pion se trouve a l'extremite gauche
         Position position = new Position(1, 0);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         List<Position> expected = List.of(
@@ -335,11 +335,11 @@ public class PieceTest {
     public void black_testGetPossibleMovesForwardOppositePawnInitial1() {
         //pion adverse en face de moi
         Position position = new Position(6, 2);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(5, 2);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of();
         List<Position> positions = piece.getPossibleMoves(position, board);
@@ -351,11 +351,11 @@ public class PieceTest {
     public void black_testGetPossibleMovesForwardOppositePawnInitial2() {
         //pion en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(6, 1);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(4, 1);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(5, 1)
@@ -370,15 +370,15 @@ public class PieceTest {
     public void black_testGetPossibleMovesDiagonalsOppositePawnInitial() {
         //pion adverses en diagonal des 2 cotés
         Position position = new Position(6, 3);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(5, 2);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
 
         Position position3 = new Position(5, 4);
-        Piece piece3 = new Piece(Color.WHITE);
+        Piece piece3 = new Pawn(Color.WHITE);
         board.setPiece(piece3, position3);
         List<Position> expected = List.of(
                 new Position(5, 2),
@@ -396,11 +396,11 @@ public class PieceTest {
     public void black_testGetPossibleMovesForwardPawnInitialOfSamePlayer() {
         //pion de meme couleur en face de moi
         Position position = new Position(6, 2);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(5, 2);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
 
         List<Position> expected = List.of();
@@ -414,11 +414,11 @@ public class PieceTest {
     public void black_testGetPossibleMovesForwardPawnInitialOfSamePlayer2() {
         //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(6, 3);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(4, 3);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(5, 3)
@@ -432,15 +432,15 @@ public class PieceTest {
     public void black_testGetPossibleMovesDiagonalsPawnInitialOfSamePlayer() {
         //pion adverses en diagonal des 2 cotés
         Position position = new Position(6, 3);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(5, 2);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
 
         Position position3 = new Position(5, 4);
-        Piece piece3 = new Piece(Color.BLACK);
+        Piece piece3 = new Pawn(Color.BLACK);
         board.setPiece(piece3, position3);
 
         List<Position> expected = List.of(
@@ -457,11 +457,11 @@ public class PieceTest {
     public void black_testGetPossibleMovesForwardOppositePawn1() {
         //pion adverse en face de moi
         Position position = new Position(5, 3);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(4, 3);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of();
         List<Position> positions = piece.getPossibleMoves(position, board);
@@ -473,11 +473,11 @@ public class PieceTest {
     public void black_testGetPossibleMovesForwardOppositePawn2() {
         //pion en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(5, 2);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(3, 2);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(4, 2)
@@ -492,15 +492,15 @@ public class PieceTest {
     public void black_testGetPossibleMovesDiagonalsOppositePawn() {
         //pion adverses en diagonal des 2 cotés
         Position position = new Position(5, 2);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(4, 1);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Pawn(Color.WHITE);
         board.setPiece(piece2, position2);
 
         Position position3 = new Position(4, 3);
-        Piece piece3 = new Piece(Color.WHITE);
+        Piece piece3 = new Pawn(Color.WHITE);
         board.setPiece(piece3, position3);
         List<Position> expected = List.of(
                 new Position(4, 3),
@@ -517,11 +517,11 @@ public class PieceTest {
     public void black_testGetPossibleMovesForwardPawnOfSamePlayer() {
         //pion de meme couleur en face de moi
         Position position = new Position(5, 3);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(4, 3);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
 
         List<Position> expected = List.of();
@@ -535,11 +535,11 @@ public class PieceTest {
     public void black_testGetPossibleMovesForwardPawnOfSamePlayer2() {
         //pion de meme couleur en face de moi mais avec une case libre qui se trouve entre nous
         Position position = new Position(5, 2);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(3, 2);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(4, 2)
@@ -553,15 +553,15 @@ public class PieceTest {
     public void black_testGetPossibleMovesDiagonalsPawnOfSamePlayer() {
         //pion adverses en diagonal des 2 cotés
         Position position = new Position(5, 3);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         Position position2 = new Position(4, 2);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
 
         Position position3 = new Position(4, 4);
-        Piece piece3 = new Piece(Color.BLACK);
+        Piece piece3 = new Pawn(Color.BLACK);
         board.setPiece(piece3, position3);
 
         List<Position> expected = List.of(
@@ -576,7 +576,7 @@ public class PieceTest {
     public void black_testGetPossibleMovesEdgePawn() {
         //pion se trouve a l'extremite
         Position position = new Position(0, 1);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         List<Position> expected = List.of();
@@ -589,7 +589,7 @@ public class PieceTest {
     public void black_testGetPossibleMovesLeftEdgePawn() {
         //pion noir se trouve a l'extremite gauche
         Position position = new Position(6, 0);
-        Piece piece = new Piece(Color.BLACK);
+        Piece piece = new Pawn(Color.BLACK);
         board.setPiece(piece, position);
 
         List<Position> expected = List.of(
@@ -605,11 +605,11 @@ public class PieceTest {
     public void white_testGetPossibleMovesRightEdgePawn_eat() {
         //pion noir se trouve a l'extremite gauche
         Position position = new Position(1, 7);
-        Piece piece = new Piece(Color.WHITE);
+        Piece piece = new Pawn(Color.WHITE);
         board.setPiece(piece, position);
 
         Position position2 = new Position(2, 6);
-        Piece piece2 = new Piece(Color.BLACK);
+        Piece piece2 = new Pawn(Color.BLACK);
         board.setPiece(piece2, position2);
         List<Position> expected = List.of(
                 new Position(2, 7),

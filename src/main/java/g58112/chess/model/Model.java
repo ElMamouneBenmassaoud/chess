@@ -1,5 +1,6 @@
 package g58112.chess.model;
 
+import g58112.chess.model.pieces.Piece;
 import java.util.List;
 
 /**
