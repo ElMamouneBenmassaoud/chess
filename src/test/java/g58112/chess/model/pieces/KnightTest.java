@@ -97,6 +97,48 @@ public class KnightTest {
      * Test of getPossibleMoves method, of class Knight.
      */
     @Test
+    public void knightRightCornerPos() {
+        System.out.println("getPossibleMoves");
+        Position position = new Position(7, 7);
+        Piece piece = new Knight(Color.WHITE);
+        board.setPiece(piece, position);
+        Position position2 = new Position(6, 5);
+        Piece piece2 = new Knight(Color.WHITE);
+        board.setPiece(piece2, position2);
+
+        List<Position> expected = List.of(
+                new Position(5, 6)
+        );
+        List<Position> positions = piece.getPossibleMoves(position, board);
+
+        assertEqualsIgnoringOrder(expected, positions);
+    }
+    
+    /**
+     * Test of getPossibleMoves method, of class Knight.
+     */
+    @Test
+    public void knightCantMove() {
+        System.out.println("getPossibleMoves");
+        Position position = new Position(0, 0);
+        Piece piece = new Knight(Color.WHITE);
+        board.setPiece(piece, position);
+        Position position2 = new Position(1, 2);
+        Piece piece2 = new Knight(Color.WHITE);
+        board.setPiece(piece2, position2);
+        Position position3 = new Position(2, 1);
+        Piece piece3 = new Knight(Color.WHITE);
+        board.setPiece(piece3, position3);
+
+        List<Position> expected = List.of();
+        List<Position> positions = piece.getPossibleMoves(position, board);
+
+        assertEqualsIgnoringOrder(expected, positions);
+    }
+    /**
+     * Test of getPossibleMoves method, of class Knight.
+     */
+    @Test
     public void knightMiddlePos_eat() {
         System.out.println("getPossibleMoves");
         Position position = new Position(3, 3);
@@ -121,7 +163,72 @@ public class KnightTest {
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+    /**
+     * Test of getPossibleMoves method, of class Knight.
+     */
+    @Test
+    public void initialKnightPos_getCapture() {
+        System.out.println("getPossibleMoves");
+        Position position = new Position(0, 2);
+        Piece piece = new Knight(Color.WHITE);
+        board.setPiece(piece, position);
+
+        List<Position> expected = List.of();
+        List<Position> positions = piece.getCapturePositions(position, board);
+
+        assertEqualsIgnoringOrder(expected, positions);
+    }
+    /**
+     * Test of getPossibleMoves method, of class Knight.
+     */
+    @Test
+    public void KnightLeftEdgePos_getCapture() {
+        System.out.println("getPossibleMoves");
+        Position position = new Position(2, 0);
+        Piece piece = new Knight(Color.WHITE);
+        board.setPiece(piece, position);
+        Position position2 = new Position(3, 2);
+        Piece piece2 = new Knight(Color.BLACK);
+        board.setPiece(piece2, position2);
+
+        List<Position> expected = List.of(
+                new Position(3, 2)
+        );
+        List<Position> positions = piece.getCapturePositions(position, board);
+
+        assertEqualsIgnoringOrder(expected, positions);
+    }
     
+    /**
+     * Test of getPossibleMoves method, of class Knight.
+     */
+    @Test
+    public void knightMiddlePos_getCapture() {
+        System.out.println("getPossibleMoves");
+        Position position = new Position(3, 3);
+        Piece piece = new Knight(Color.WHITE);
+        board.setPiece(piece, position);
+        Position position4 = new Position(4, 1);
+        Piece piece4 = new Knight(Color.WHITE);
+        board.setPiece(piece4, position4);
+        Position position2 = new Position(5, 2);
+        Piece piece2 = new Pawn(Color.BLACK);
+        board.setPiece(piece2, position2);
+        Position position3 = new Position(2, 5);
+        Piece piece3 = new Knight(Color.BLACK);
+        board.setPiece(piece3, position3);
+        Position position5 = new Position(4, 2);
+        Piece piece5 = new Knight(Color.BLACK);
+        board.setPiece(piece5, position5);
+
+        List<Position> expected = List.of(
+                new Position(5, 2),
+                new Position(2, 5)
+        );
+        List<Position> positions = piece.getCapturePositions(position, board);
+
+        assertEqualsIgnoringOrder(expected, positions);
+    }
     /*
      *      Permet de tester si deux listes de positions sont identiques à l'ordre
      *      des éléments prêts. Cette méthode est appelée
