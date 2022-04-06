@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author mamou
+ * the Knight class will represent a pawn and its color
+ * 
+ * @author g58112
  */
 public class Knight extends Piece {
 

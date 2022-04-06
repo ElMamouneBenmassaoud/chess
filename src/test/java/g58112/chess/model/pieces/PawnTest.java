@@ -1,5 +1,8 @@
-package g58112.chess.model;
+package g58112.chess.model.pieces;
 
+import g58112.chess.model.Board;
+import g58112.chess.model.Color;
+import g58112.chess.model.Position;
 import g58112.chess.model.pieces.Knight;
 import g58112.chess.model.pieces.Pawn;
 import g58112.chess.model.pieces.Piece;
