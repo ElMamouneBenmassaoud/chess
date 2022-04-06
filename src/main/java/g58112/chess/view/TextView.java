@@ -9,6 +9,12 @@ import g58112.chess.model.Model;
 import g58112.chess.model.pieces.Piece;
 import g58112.chess.model.Player;
 import g58112.chess.model.Position;
+import g58112.chess.model.pieces.Bishop;
+import g58112.chess.model.pieces.King;
+import g58112.chess.model.pieces.Knight;
+import g58112.chess.model.pieces.Pawn;
+import g58112.chess.model.pieces.Queen;
+import g58112.chess.model.pieces.Rook;
 import java.util.List;
 import java.util.Scanner;
 
@@ -53,15 +59,24 @@ public class TextView implements View {
                     row--;
                 }
                 Position pos = new Position(row, col);
-                Piece pawn = model.getPiece(pos);
-                if (pawn == null) {
+                Piece piece = model.getPiece(pos);
+                String pieceInitial = "";
+                String pieceColor;
+                
+                if (piece == null) {
                     System.out.print("     |");  //case libre 
                 } else {
-                    if (pawn.getColor().equals(Color.BLACK)) {
-                        System.out.print(" PN  |");    // case avec pion noir
-                    } else {
-                        System.out.print(" PB  |");   // case avec pion blanc
-                    }
+                    if (piece instanceof Pawn) pieceInitial = "P";
+                    if (piece instanceof Knight) pieceInitial = "C";
+                    if (piece instanceof King) pieceInitial = "*";
+                    if (piece instanceof Queen) pieceInitial = "#";
+                    if (piece instanceof Rook) pieceInitial = "T";
+                    if (piece instanceof Bishop) pieceInitial = "F";
+                    
+                    if (piece.getColor().equals(Color.BLACK)) pieceColor = "N";
+                    else pieceColor = "B";
+                    
+                    System.out.print(" " + pieceInitial + pieceColor + "  |");
                 }
                 col++;
             }
