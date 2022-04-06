@@ -52,7 +52,7 @@ public class Board {
      */
     public void setPiece(Piece piece, Position position) {
         if (!contains(position)) {
-            throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
+            throw new IllegalArgumentException("la position n'existe pas sur l'échiquier");
         }
         Square casePiece = new Square(piece);
         squares[position.getRow()][position.getColumn()] = casePiece;
@@ -69,7 +69,7 @@ public class Board {
      */
     public Piece getPiece(Position pos) {
         if (!contains(pos)) {
-            throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
+            throw new IllegalArgumentException("la position n'existe pas sur l'échiquier");
         }
 
         int row = pos.getRow();
@@ -103,7 +103,7 @@ public class Board {
      */
     public void dropPiece(Position pos) {
         if (!contains(pos)) {
-            throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
+            throw new IllegalArgumentException("la position n'existe pas sur l'échiquier");
         }
         setPiece(null, pos);
     }
@@ -118,7 +118,7 @@ public class Board {
      */
     public boolean isFree(Position pos) {
         if (!contains(pos)) {
-            throw new IllegalArgumentException("la position n'existe pas sur l'échequier");
+            throw new IllegalArgumentException("la position n'existe pas sur l'échiquier");
         }
 
         return squares[pos.getRow()][pos.getColumn()].isFree();

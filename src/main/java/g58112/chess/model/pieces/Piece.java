@@ -2,6 +2,7 @@ package g58112.chess.model.pieces;
 
 import g58112.chess.model.Board;
 import g58112.chess.model.Color;
+import g58112.chess.model.Direction;
 import g58112.chess.model.Position;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,4 +91,27 @@ public abstract class Piece {
         return true;
     }
 
+    /**
+     * This method provides us with the list of possible moves in a given direction for a piece
+     * located in a given position on the chessboard.
+     * @param position the position of the piece
+     * @param board the chessboard on which it plays
+     * @param direction the direction for which we check the possible moves
+     * @return the list of possible moves in the given direction for a piece
+     */
+    protected List<Position> getAllMovesInDirection(Position position, Board board, Direction direction) {
+        List<Position> possibleMoves = new ArrayList();
+        
+        Position pos = position.next(direction);
+        
+        while (board.contains(pos) && board.isFree(pos)) {
+            possibleMoves.add(pos);
+            
+            pos = pos.next(direction);
+        }
+        
+        if (board.contains(pos) && board.containsOppositeColor(pos, color)) possibleMoves.add(pos);
+        
+        return possibleMoves;
+    }
 }
