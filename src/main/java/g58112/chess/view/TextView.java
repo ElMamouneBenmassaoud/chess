@@ -144,7 +144,7 @@ public class TextView implements View {
         List<String> listeChar = List.of("a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H");
         System.out.println("Veuillez saisir la lettre de la colonne (a à h)");
         String column = clavier.nextLine();
-        while (!Character.isLetter(column.charAt(0)) || !listeChar.contains(column)) {
+        while (column.length() == 0 || !Character.isLetter(column.charAt(0)) || !listeChar.contains(column)) {
             System.out.println("Lettre non autorisée !");
             System.out.println("Veuillez saisir la lettre de la colonne (a à h):");
             column = clavier.nextLine();
