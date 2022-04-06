@@ -1,7 +1,12 @@
 package g58112.chess.model;
 
+import g58112.chess.model.pieces.Bishop;
+import g58112.chess.model.pieces.King;
+import g58112.chess.model.pieces.Knight;
 import g58112.chess.model.pieces.Pawn;
 import g58112.chess.model.pieces.Piece;
+import g58112.chess.model.pieces.Queen;
+import g58112.chess.model.pieces.Rook;
 import java.util.List;
 
 /**
@@ -33,9 +38,27 @@ public class Game implements Model {
         for (int i = 0; i < 8; i++) {
             board.setPiece(new Pawn(Color.WHITE), new Position(board.getInitialPawnRow(Color.WHITE), i));
         }
+        board.setPiece(new Rook(Color.WHITE), new Position(0,0));
+        board.setPiece(new Rook(Color.WHITE), new Position(0,7));
+        board.setPiece(new Knight(Color.WHITE), new Position(0,1));
+        board.setPiece(new Knight(Color.WHITE), new Position(0,6));
+        board.setPiece(new Bishop(Color.WHITE), new Position(0,2));
+        board.setPiece(new Bishop(Color.WHITE), new Position(0,5));
+        board.setPiece(new Queen(Color.WHITE), new Position(0,3));
+        board.setPiece(new King(Color.WHITE), new Position(0,4));
+        
         for (int j = 0; j < 8; j++) {
             board.setPiece(new Pawn(Color.BLACK), new Position(board.getInitialPawnRow(Color.BLACK), j));
         }
+        board.setPiece(new Rook(Color.BLACK), new Position(7,0));
+        board.setPiece(new Rook(Color.BLACK), new Position(7,7));
+        board.setPiece(new Knight(Color.BLACK), new Position(7,1));
+        board.setPiece(new Knight(Color.BLACK), new Position(7,6));
+        board.setPiece(new Bishop(Color.BLACK), new Position(7,2));
+        board.setPiece(new Bishop(Color.BLACK), new Position(7,5));
+        board.setPiece(new Queen(Color.BLACK), new Position(7,3));
+        board.setPiece(new King(Color.BLACK), new Position(7,4));
+        
         currentPlayer = white;
     }
 
