@@ -86,4 +86,12 @@ public interface Model {
      */
     public GameState getState();
 
+    /**
+     * This method returns the validity of the move from the old
+     * position to the new position
+     * @param oldPos the old position
+     * @param newPos the new position
+     * @return true if the move is valid, false otherwise
+     */
+    public boolean isValidMove(Position oldPos, Position newPos);
 }

@@ -7,6 +7,7 @@ import g58112.chess.model.pieces.Pawn;
 import g58112.chess.model.pieces.Piece;
 import g58112.chess.model.pieces.Queen;
 import g58112.chess.model.pieces.Rook;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -145,5 +146,52 @@ public class Game implements Model {
     @Override
     public GameState getState() {
         return state;
+    }
+    
+    /**
+     * this method returns the list of positions on which
+     * the given player can capture an opponent's piece
+     *
+     * @param player the given player
+     * @return the list of capture positions for the player
+     */
+    private List<Position> getCapturePositions(Player player) {
+        List<Position> capturePositions = new ArrayList();
+        
+        for (Position position : board.getPositionOccupiedBy(player)) {
+            Piece piece = board.getPiece(position);
+            for (Position capturePosition : piece.getCapturePositions(position, board)) {
+                if (!capturePositions.contains(capturePosition)) capturePositions.add(capturePosition);
+            }
+        }
+        
+        return capturePositions;
+    }
+    
+    @Override
+    public boolean isValidMove(Position oldPos, Position newPos) {
+        boolean isValidMove = true;
+        
+        if (board.isFree(oldPos)) throw new IllegalArgumentException("La position de départ ne contient aucune pièce");
+        if (!board.getPiece(oldPos).getPossibleMoves(oldPos, board).contains(newPos)) throw new IllegalArgumentException("Le déplacement joué n'est pas valide pour cette pièce");
+        if (!isCurrentPlayerPosition(oldPos)) throw new IllegalArgumentException("la pièce n'appartient pas au joueur actuel");
+        
+        Player oppositePlayer = getOppositePlayer();
+        Piece movedPiece = board.getPiece(oldPos);
+        
+        King currentKing;
+        if (currentPlayer.getColor() == Color.WHITE) currentKing = whiteKing;
+        else currentKing = blackKing;
+        
+        if (movedPiece != currentKing) {
+            board.dropPiece(oldPos);
+            if (getCapturePositions(oppositePlayer).contains(board.getPiecePosition(currentKing))) isValidMove = false;
+            board.setPiece(movedPiece, oldPos);
+        }
+        else {
+            if (getCapturePositions(oppositePlayer).contains(newPos)) isValidMove = false;
+        }
+        
+        return isValidMove;
     }
 }
