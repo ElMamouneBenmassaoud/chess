@@ -166,4 +166,22 @@ public class Board {
         }
         return liste;
     }
+    
+    /**
+     * this method returns the position occupied by a piece
+     * received in parameter and returns null if the piece
+     * does not exist on the board
+     * 
+     * @param piece is the piece for which we want to retrieve the position
+     * @return the position occupied by the given piece
+     */
+    public Position getPiecePosition(Piece piece) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (squares[i][j].getPiece() == piece) return new Position(i, j);
+            }
+        }
+        
+        return null;
+    }
 }
