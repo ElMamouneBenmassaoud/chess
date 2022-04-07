@@ -79,5 +79,11 @@ public interface Model {
      * @return the liste of admissible positions.
      */
     public List<Position> getPossibleMoves(Position position);
+    
+    /**
+     * This method returns the state of the game
+     * @return the state of the game
+     */
+    public GameState getState();
 
 }

@@ -22,7 +22,12 @@ public class Game implements Model {
     private final Player white;
     private final Player black;
     private Player currentPlayer;
+    
+    private King whiteKing;
+    private King blackKing;
 
+    private GameState state;
+    
     /**
      * It simply creates a new white player, a new black player and a new empty
      * board
@@ -45,7 +50,9 @@ public class Game implements Model {
         board.setPiece(new Bishop(Color.WHITE), new Position(0,2));
         board.setPiece(new Bishop(Color.WHITE), new Position(0,5));
         board.setPiece(new Queen(Color.WHITE), new Position(0,3));
-        board.setPiece(new King(Color.WHITE), new Position(0,4));
+        
+        whiteKing = new King(Color.WHITE);
+        board.setPiece(whiteKing, new Position(0,4));
         
         for (int j = 0; j < 8; j++) {
             board.setPiece(new Pawn(Color.BLACK), new Position(board.getInitialPawnRow(Color.BLACK), j));
@@ -57,9 +64,13 @@ public class Game implements Model {
         board.setPiece(new Bishop(Color.BLACK), new Position(7,2));
         board.setPiece(new Bishop(Color.BLACK), new Position(7,5));
         board.setPiece(new Queen(Color.BLACK), new Position(7,3));
-        board.setPiece(new King(Color.BLACK), new Position(7,4));
+        
+        blackKing = new King(Color.BLACK);
+        board.setPiece(blackKing, new Position(7,4));
         
         currentPlayer = white;
+        
+        state = GameState.PLAY;
     }
 
     @Override
@@ -131,4 +142,8 @@ public class Game implements Model {
         return piece.getPossibleMoves(position, board);
     }
 
+    @Override
+    public GameState getState() {
+        return state;
+    }
 }
