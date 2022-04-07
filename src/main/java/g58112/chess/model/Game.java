@@ -233,6 +233,7 @@ public class Game implements Model {
         
         if (replacedPiece != null) board.dropPiece(newPos);
         board.setPiece(movedPiece, newPos);
+        board.dropPiece(oldPos);
         if (getCapturePositions(oppositePlayer).contains(board.getPiecePosition(currentKing))) isValidMove = false;
 
         board.setPiece(movedPiece, oldPos);
