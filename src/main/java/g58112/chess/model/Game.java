@@ -121,20 +121,38 @@ public class Game implements Model {
         }
 
         if (!isGameOver()) {
-            board.setPiece(getPiece(oldPos), newPos);
-            board.dropPiece(oldPos);
-            currentPlayer = getOppositePlayer();
+            if (isValidMove(oldPos, newPos)) {
+                board.setPiece(getPiece(oldPos), newPos);
+                board.dropPiece(oldPos);
+                
+                King oppositeKing;
+                if (currentPlayer.getColor() == Color.WHITE) oppositeKing = blackKing;
+                else oppositeKing = whiteKing;
+                
+                if (getCapturePositions(currentPlayer).contains(board.getPiecePosition(oppositeKing))) {
+                    if (!getValidMoves(getOppositePlayer()).isEmpty()) {
+                        state = GameState.CHECK;
+                    }
+                    else {
+                        state = GameState.CHECK_MATE;
+                    }
+                }
+                else {
+                    if (getValidMoves(getOppositePlayer()).isEmpty()) {
+                        state = GameState.STALE_MATE;
+                    }
+                    else state = GameState.PLAY;
+                }
+                    
+                currentPlayer = getOppositePlayer();
+            }
+            else throw new IllegalArgumentException("La position jouée n'est pas valide, car le joueur est en position d'échec");
         }
     }
 
     @Override
     public boolean isGameOver() {
-        List<Position> currentPos = board.getPositionOccupiedBy(currentPlayer);
-        int i = 0;
-        while (i < currentPos.size() && getPossibleMoves(currentPos.get(i)).isEmpty()) {
-            i++;
-        }
-        return i == currentPos.size();
+        return (state == GameState.CHECK_MATE || state == GameState.STALE_MATE);
     }
 
     @Override
@@ -146,6 +164,26 @@ public class Game implements Model {
     @Override
     public GameState getState() {
         return state;
+    }
+    
+     /**
+     * this method returns the list of valid moves
+     * for the given player 
+     *
+     * @param player the given player
+     * @return the list of valid moves for the player
+     */
+    private List<Position> getValidMoves(Player player) {
+        List<Position> validPositions = new ArrayList();
+        
+        for (Position position : board.getPositionOccupiedBy(player)) {
+            Piece piece = board.getPiece(position);
+            for (Position newPos : piece.getPossibleMoves(position, board)) {
+                if (!validPositions.contains(newPos) && isValidMove(position, newPos)) validPositions.add(newPos);
+            }
+        }
+        
+        return validPositions;
     }
     
     /**
@@ -174,23 +212,31 @@ public class Game implements Model {
         
         if (board.isFree(oldPos)) throw new IllegalArgumentException("La position de départ ne contient aucune pièce");
         if (!board.getPiece(oldPos).getPossibleMoves(oldPos, board).contains(newPos)) throw new IllegalArgumentException("Le déplacement joué n'est pas valide pour cette pièce");
-        if (!isCurrentPlayerPosition(oldPos)) throw new IllegalArgumentException("la pièce n'appartient pas au joueur actuel");
         
-        Player oppositePlayer = getOppositePlayer();
-        Piece movedPiece = board.getPiece(oldPos);
-        
-        King currentKing;
-        if (currentPlayer.getColor() == Color.WHITE) currentKing = whiteKing;
-        else currentKing = blackKing;
-        
-        if (movedPiece != currentKing) {
-            board.dropPiece(oldPos);
-            if (getCapturePositions(oppositePlayer).contains(board.getPiecePosition(currentKing))) isValidMove = false;
-            board.setPiece(movedPiece, oldPos);
+        Player movingPlayer;
+        Player oppositePlayer;
+        if (board.getPiece(oldPos).getColor() == Color.WHITE) {
+            movingPlayer = white;
+            oppositePlayer = black;
         }
         else {
-            if (getCapturePositions(oppositePlayer).contains(newPos)) isValidMove = false;
+            movingPlayer = black;
+            oppositePlayer = white;
         }
+  
+        Piece movedPiece = board.getPiece(oldPos);
+        Piece replacedPiece = board.getPiece(newPos);
+        
+        King currentKing;
+        if (movingPlayer.getColor() == Color.WHITE) currentKing = whiteKing;
+        else currentKing = blackKing;
+        
+        if (replacedPiece != null) board.dropPiece(newPos);
+        board.setPiece(movedPiece, newPos);
+        if (getCapturePositions(oppositePlayer).contains(board.getPiecePosition(currentKing))) isValidMove = false;
+
+        board.setPiece(movedPiece, oldPos);
+        board.setPiece(replacedPiece, newPos);
         
         return isValidMove;
     }

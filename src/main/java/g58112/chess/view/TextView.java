@@ -5,6 +5,7 @@
 package g58112.chess.view;
 
 import g58112.chess.model.Color;
+import g58112.chess.model.GameState;
 import g58112.chess.model.Model;
 import g58112.chess.model.pieces.Piece;
 import g58112.chess.model.Player;
@@ -89,14 +90,23 @@ public class TextView implements View {
     @Override
     public void displayWinner() {
         if (model.isGameOver()) {
-            Player winner = model.getOppositePlayer();
-            System.out.println("Bien joué !");
-            System.out.println(winner + "a gagné la partie !");
+            displayBoard();
+            
+            if (model.getState() == GameState.CHECK_MATE) {
+                Player winner = model.getOppositePlayer();
+                System.out.println("Echec et mat !");
+                System.out.println(winner.getColor() + " a gagné la partie !");
+            }
+            else {
+                System.out.println(" Match nul !");
+            }
         }
     }
 
     @Override
     public void displayPlayer() {
+        if (model.getState() == GameState.CHECK) System.out.println("Echec !");
+        
         if (model.getCurrentPlayer().getColor().equals(Color.BLACK)) {
             System.out.println("c'est au tour du joueur BLACK de jouer:");
         } else {

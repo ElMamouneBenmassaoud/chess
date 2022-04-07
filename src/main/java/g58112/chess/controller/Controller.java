@@ -1,5 +1,6 @@
 package g58112.chess.controller;
 
+import g58112.chess.model.GameState;
 import g58112.chess.model.Model;
 import g58112.chess.model.Position;
 import g58112.chess.view.View;
