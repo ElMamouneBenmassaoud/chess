@@ -1,7 +1,9 @@
 package g58112.chess.model;
 
+import g58112.chess.model.pieces.King;
 import g58112.chess.model.pieces.Pawn;
 import g58112.chess.model.pieces.Piece;
+import g58112.chess.model.pieces.Queen;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -99,6 +101,167 @@ public class GameTest {
         List<Position> result = instance.getPossibleMoves(position);
         assertEqualsIgnoringOrder(expResult, result);
 
+    }
+    
+    /**
+     * Test of the Lion Mat.
+     */
+    @Test
+    public void testLionMat() {
+        System.out.println("testLionMat");
+        Game instance = new Game();
+        instance.start();
+        
+        instance.movePiecePosition(new Position(1, 6), new Position(3, 6));
+        instance.movePiecePosition(new Position(6, 4), new Position(4, 4));
+        instance.movePiecePosition(new Position(1, 5), new Position(2, 5));
+        instance.movePiecePosition(new Position(7, 3), new Position(3, 7));
+        
+        GameState expGameState = GameState.CHECK_MATE;
+        GameState result = instance.getState();
+        
+        assertTrue(expGameState == result);
+    }
+    
+    /**
+     * Test of the Check state.
+     */
+    @Test
+    public void testCheckState() {
+        System.out.println("testCheckState");
+        Game instance = new Game();
+        instance.start();
+        
+        instance.movePiecePosition(new Position(1, 4), new Position(3, 4));
+        instance.movePiecePosition(new Position(6, 4), new Position(4, 4));
+        instance.movePiecePosition(new Position(0, 5), new Position(3, 2));
+        instance.movePiecePosition(new Position(6, 0), new Position(5, 0));
+        instance.movePiecePosition(new Position(3, 2), new Position(6, 5));
+        
+        GameState expGameState = GameState.CHECK;
+        GameState result = instance.getState();
+        
+        assertTrue(expGameState == result);
+    }
+    
+    @Test
+    public void testStaleMateState() {
+        System.out.println("testStaleMate");
+        Game instance = new Game();
+        instance.start();
+        
+        instance.movePiecePosition(new Position(1, 4), new Position(3, 4));
+        instance.movePiecePosition(new Position(6, 4), new Position(4, 4));
+        instance.movePiecePosition(new Position(0, 6), new Position(2, 5));
+        instance.movePiecePosition(new Position(7, 1), new Position(5, 2));
+        instance.movePiecePosition(new Position(0, 1), new Position(2, 2));
+        instance.movePiecePosition(new Position(7, 6), new Position(5, 5));
+        instance.movePiecePosition(new Position(0, 5), new Position(4, 1));
+        instance.movePiecePosition(new Position(7, 5), new Position(3, 1));
+        instance.movePiecePosition(new Position(0, 4), new Position(1, 4));
+        instance.movePiecePosition(new Position(7, 4), new Position(7, 5));
+        instance.movePiecePosition(new Position(0, 7), new Position(0, 4));
+        instance.movePiecePosition(new Position(7, 5), new Position(7, 4));
+        instance.movePiecePosition(new Position(1, 4), new Position(0, 5));
+        instance.movePiecePosition(new Position(7, 4), new Position(7, 5));
+        instance.movePiecePosition(new Position(0, 5), new Position(0, 6));
+        instance.movePiecePosition(new Position(7, 5), new Position(7, 4));
+        instance.movePiecePosition(new Position(0, 4), new Position(0, 5));
+        instance.movePiecePosition(new Position(7, 4), new Position(6, 4));
+        instance.movePiecePosition(new Position(0, 5), new Position(0, 4));
+        instance.movePiecePosition(new Position(7, 7), new Position(7, 4));
+        instance.movePiecePosition(new Position(0, 4), new Position(0, 5));
+        instance.movePiecePosition(new Position(6, 4), new Position(7, 5));
+        instance.movePiecePosition(new Position(0, 5), new Position(0, 4));
+        instance.movePiecePosition(new Position(7, 5), new Position(7, 6));
+        instance.movePiecePosition(new Position(0, 4), new Position(0, 5));
+        instance.movePiecePosition(new Position(7, 4), new Position(7, 5));
+        instance.movePiecePosition(new Position(1, 3), new Position(2, 3));
+        instance.movePiecePosition(new Position(6, 3), new Position(5, 3));
+        instance.movePiecePosition(new Position(0, 2), new Position(4, 6));
+        instance.movePiecePosition(new Position(3, 1), new Position(2, 2));
+        instance.movePiecePosition(new Position(1, 1), new Position(2, 2));
+        instance.movePiecePosition(new Position(7, 3), new Position(6, 4));
+        instance.movePiecePosition(new Position(0, 5), new Position(0, 4));
+        instance.movePiecePosition(new Position(5, 2), new Position(7, 3));
+        instance.movePiecePosition(new Position(2, 3), new Position(3, 3));
+        instance.movePiecePosition(new Position(6, 7), new Position(5, 7));
+        instance.movePiecePosition(new Position(4, 6), new Position(0, 2));
+        instance.movePiecePosition(new Position(6, 0), new Position(5, 0));
+        instance.movePiecePosition(new Position(4, 1), new Position(2, 3));
+        instance.movePiecePosition(new Position(7, 2), new Position(3, 6));
+        instance.movePiecePosition(new Position(1, 7), new Position(2, 7));
+        instance.movePiecePosition(new Position(3, 6), new Position(6, 3));
+        instance.movePiecePosition(new Position(1, 0), new Position(3, 0));
+        instance.movePiecePosition(new Position(5, 0), new Position(4, 0));
+        instance.movePiecePosition(new Position(2, 5), new Position(3, 7));
+        instance.movePiecePosition(new Position(7, 3), new Position(5, 2));
+        instance.movePiecePosition(new Position(3, 7), new Position(4, 5));
+        instance.movePiecePosition(new Position(6, 3), new Position(4, 5));
+        instance.movePiecePosition(new Position(3, 4), new Position(4, 5));
+        instance.movePiecePosition(new Position(6, 4), new Position(6, 3));
+        instance.movePiecePosition(new Position(1, 6), new Position(3, 6));
+        instance.movePiecePosition(new Position(4, 4), new Position(3, 3));
+        instance.movePiecePosition(new Position(2, 2), new Position(3, 3));
+        instance.movePiecePosition(new Position(5, 2), new Position(3, 3));
+        instance.movePiecePosition(new Position(0, 2), new Position(1, 1));
+        instance.movePiecePosition(new Position(6, 2), new Position(4, 2));
+        instance.movePiecePosition(new Position(1, 1), new Position(3, 3));
+        instance.movePiecePosition(new Position(4, 2), new Position(3, 3));
+        instance.movePiecePosition(new Position(2, 3), new Position(4, 1));
+        instance.movePiecePosition(new Position(6, 3), new Position(6, 2));
+        instance.movePiecePosition(new Position(0, 3), new Position(3, 3));
+        instance.movePiecePosition(new Position(5, 3), new Position(4, 3));
+        instance.movePiecePosition(new Position(0, 4), new Position(1, 4));
+        instance.movePiecePosition(new Position(7, 0), new Position(7, 3));
+        instance.movePiecePosition(new Position(0, 0), new Position(0, 4));
+        instance.movePiecePosition(new Position(7, 3), new Position(5, 3));
+        instance.movePiecePosition(new Position(1, 4), new Position(6, 4));
+        instance.movePiecePosition(new Position(6, 2), new Position(1, 2));
+        instance.movePiecePosition(new Position(6, 4), new Position(6, 1));
+        instance.movePiecePosition(new Position(5, 5), new Position(3, 4));
+        instance.movePiecePosition(new Position(0, 4), new Position(1, 4));
+        instance.movePiecePosition(new Position(1, 2), new Position(0, 2));
+        instance.movePiecePosition(new Position(0, 6), new Position(1, 6));
+        instance.movePiecePosition(new Position(0, 2), new Position(7, 2));
+        instance.movePiecePosition(new Position(6, 1), new Position(6, 4));
+        instance.movePiecePosition(new Position(7, 2), new Position(7, 3));
+        instance.movePiecePosition(new Position(3, 3), new Position(6, 0));
+        instance.movePiecePosition(new Position(3, 4), new Position(5, 5));
+        instance.movePiecePosition(new Position(6, 4), new Position(6, 2));
+        instance.movePiecePosition(new Position(4, 3), new Position(3, 3));
+        instance.movePiecePosition(new Position(1, 4), new Position(6, 4));
+        instance.movePiecePosition(new Position(3, 3), new Position(2, 3));
+        instance.movePiecePosition(new Position(6, 4), new Position(6, 5));
+        instance.movePiecePosition(new Position(7, 5), new Position(6, 5));
+        instance.movePiecePosition(new Position(6, 2), new Position(6, 5));
+        instance.movePiecePosition(new Position(2, 3), new Position(1, 3));
+        instance.movePiecePosition(new Position(6, 5), new Position(6, 6));
+        instance.movePiecePosition(new Position(7, 6), new Position(7, 7));
+        instance.movePiecePosition(new Position(4, 1), new Position(1, 4));
+        instance.movePiecePosition(new Position(1, 3), new Position(0, 3));
+        instance.movePiecePosition(new Position(1, 4), new Position(0, 3));
+        instance.movePiecePosition(new Position(5, 3), new Position(0, 3));
+        instance.movePiecePosition(new Position(6, 6), new Position(5, 6));
+        instance.movePiecePosition(new Position(7, 3), new Position(4, 3));
+        instance.movePiecePosition(new Position(1, 6), new Position(2, 6));
+        instance.movePiecePosition(new Position(0, 3), new Position(2, 3));
+        instance.movePiecePosition(new Position(2, 6), new Position(3, 7));
+        instance.movePiecePosition(new Position(2, 3), new Position(2, 7));
+        instance.movePiecePosition(new Position(3, 7), new Position(2, 7));
+        instance.movePiecePosition(new Position(4, 3), new Position(0, 7));
+        instance.movePiecePosition(new Position(2, 7), new Position(2, 6));
+        instance.movePiecePosition(new Position(5, 5), new Position(4, 7));
+        instance.movePiecePosition(new Position(3, 6), new Position(4, 7));
+        instance.movePiecePosition(new Position(0, 7), new Position(2, 5));
+        instance.movePiecePosition(new Position(2, 6), new Position(1, 7));
+        instance.movePiecePosition(new Position(2, 5), new Position(1, 6));
+        instance.movePiecePosition(new Position(1, 7), new Position(1, 6));
+        
+        GameState expGameState = GameState.STALE_MATE;
+        GameState result = instance.getState();
+        
+        assertTrue(expGameState == result);
     }
 
     private void assertEqualsIgnoringOrder(List<Position> expected, List<Position> actual) {
