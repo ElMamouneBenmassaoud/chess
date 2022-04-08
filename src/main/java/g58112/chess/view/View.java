@@ -4,6 +4,7 @@
  */
 package g58112.chess.view;
 
+import g58112.chess.model.Player;
 import g58112.chess.model.Position;
 
 /**
@@ -43,4 +44,20 @@ public interface View {
      * @param message
      */
     public void displayError(String message);
+    
+    /**
+     * displays a message informing the next player of a check situation.
+     */
+    public void displayCheck();
+    
+    /**
+     * displays a message informing of the end of the game and identifying the winner.
+     * @param winner the player who won the game
+     */
+    public void displayMat(Player winner);
+    
+    /**
+     * displays a message informing of a stalemate situation.
+     */
+    public void displayStaleMat();
 }

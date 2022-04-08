@@ -94,18 +94,17 @@ public class TextView implements View {
             
             if (model.getState() == GameState.CHECK_MATE) {
                 Player winner = model.getOppositePlayer();
-                System.out.println("Echec et mat !");
-                System.out.println(winner.getColor() + " a gagné la partie !");
+                displayMat(winner);
             }
             else {
-                System.out.println(" Match nul !");
+                displayStaleMat();
             }
         }
     }
 
     @Override
     public void displayPlayer() {
-        if (model.getState() == GameState.CHECK) System.out.println("Echec !");
+        if (model.getState() == GameState.CHECK) displayCheck();
         
         if (model.getCurrentPlayer().getColor().equals(Color.BLACK)) {
             System.out.println("c'est au tour du joueur BLACK de jouer:");
@@ -209,6 +208,22 @@ public class TextView implements View {
         return column;
     }
 
+    @Override
+    public void displayCheck() {
+        System.out.println("Echec !");
+    }
+    
+    @Override
+    public void displayMat(Player winner) {
+        System.out.println("Echec et mat !");
+        System.out.println(winner.getColor() + " a gagné la partie !");
+    }
+    
+    @Override
+    public void displayStaleMat() {
+        System.out.println(" Match nul !");
+    }
+    
     @Override
     public void displayError(String message) {
         System.out.println(message);

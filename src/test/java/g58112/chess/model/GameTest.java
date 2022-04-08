@@ -1,9 +1,7 @@
 package g58112.chess.model;
 
-import g58112.chess.model.pieces.King;
 import g58112.chess.model.pieces.Pawn;
 import g58112.chess.model.pieces.Piece;
-import g58112.chess.model.pieces.Queen;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
