@@ -1,0 +1,22 @@
+* Itération 1 -- 58112
+Jouabilité : ok, robuste
+
+- Color, Direction:
+  - documente chaque élément de l'enum avec de la javadoc
+
+- Piece :
+  - je suis pas fan de tous ces try-catch ; je trouve qu'une
+    vérification explicite serait plus propre mais je peux vivre avec.
+
+- Game:
+  - il aurait fallu tester un game over
+    (c'est un peu long avec seulement des pions, ce sera plus facile avec l'itération 2)
+    
+- Controller :
+  - movePiece : méthode récursive... je trouve qu'une boucle serait plus propre.
+  - idéalement si une pièce n'admet aucun mouvement, on ne demande pas de position d'arrivée
+  - le contrôleur n'est pas censé réaliser d'affichages (MVC)
+    Pour faire ce que tu fais, il faut probablement modifier un peu l'interface de la vue.
+    Si tu me proposes une telle modif je serai sans doute d'accord (ou je te dirai mon avis).
+
+  ~18/20, c'est du beau boulot.
