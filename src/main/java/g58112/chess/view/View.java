@@ -46,6 +46,12 @@ public interface View {
     public void displayError(String message);
     
     /**
+     * displays the message passed in parameter.
+     * @param message
+     */
+    public void displayMessage(String message);
+    
+    /**
      * displays a message informing the next player of a check situation.
      */
     public void displayCheck();

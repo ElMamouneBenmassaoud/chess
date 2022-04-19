@@ -52,10 +52,10 @@ public class Controller {
     private void movePiece() {
         try {
             view.displayPlayer();
-
-            System.out.println("La position de départ:");
+            
+            view.displayMessage("La position de départ:");
             Position oldPos = view.askPosition();
-            System.out.println("La position d'arrivée:");
+            view.displayMessage("La position d'arrivée:");
             Position newPos = view.askPosition();
             model.movePiecePosition(oldPos, newPos);
         } catch (IllegalArgumentException e) {

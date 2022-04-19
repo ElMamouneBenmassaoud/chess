@@ -117,8 +117,7 @@ public class GameTest {
         
         GameState expGameState = GameState.CHECK_MATE;
         GameState result = instance.getState();
-        
-        assertTrue(expGameState == result);
+        assertEquals(expGameState, result);
     }
     
     /**
@@ -139,7 +138,7 @@ public class GameTest {
         GameState expGameState = GameState.CHECK;
         GameState result = instance.getState();
         
-        assertTrue(expGameState == result);
+        assertEquals(expGameState, result);
     }
     
     @Test
@@ -259,7 +258,7 @@ public class GameTest {
         GameState expGameState = GameState.STALE_MATE;
         GameState result = instance.getState();
         
-        assertTrue(expGameState == result);
+        assertEquals(expGameState, result);
     }
 
     private void assertEqualsIgnoringOrder(List<Position> expected, List<Position> actual) {

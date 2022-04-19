@@ -6,9 +6,14 @@ package g58112.chess.model;
  * @author 58112
  */
 public enum Color {
-
-    WHITE, //White color
-    BLACK;  // Black color
+    /**
+     * White color
+     */
+    WHITE,
+    /**
+     * Black color
+     */
+    BLACK;
 
     /**
      * This method returns an opposite color of a given color

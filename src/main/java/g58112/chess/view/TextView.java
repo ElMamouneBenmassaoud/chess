@@ -228,5 +228,10 @@ public class TextView implements View {
     public void displayError(String message) {
         System.out.println(message);
     }
+    
+    @Override
+    public void displayMessage(String message) {
+        System.out.println(message);
+    }
 
 }
