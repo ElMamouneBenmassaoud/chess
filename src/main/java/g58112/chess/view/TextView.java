@@ -5,6 +5,7 @@
 package g58112.chess.view;
 
 import g58112.chess.model.Color;
+import g58112.chess.model.Game;
 import g58112.chess.model.GameState;
 import g58112.chess.model.Model;
 import g58112.chess.model.pieces.Piece;
@@ -234,4 +235,15 @@ public class TextView implements View {
         System.out.println(message);
     }
 
+    @Override
+    public void displayHistory() {
+        for (int i = 0; i < model.getHistory().size(); i++) {
+           System.out.println(model.getHistory());
+           if(i != 0) model.getHistory().remove(--i);
+            
+        }
+        
+        
+    }
+    
 }

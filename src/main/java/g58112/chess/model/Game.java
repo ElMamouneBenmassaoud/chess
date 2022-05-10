@@ -29,6 +29,8 @@ public class Game implements Model {
 
     private GameState state;
     
+    private List<Move> history;
+    
     /**
      * It simply creates a new white player, a new black player and a new empty
      * board
@@ -37,6 +39,7 @@ public class Game implements Model {
         white = new Player(Color.WHITE);
         black = new Player(Color.BLACK);
         board = new Board();
+        history = new ArrayList();
     }
 
     @Override
@@ -94,6 +97,11 @@ public class Game implements Model {
     }
 
     @Override
+    public List<Move> getHistory() {
+        return history;
+    }
+
+    @Override
     public boolean isCurrentPlayerPosition(Position pos) {
         boolean isCurrentPlayerPosition = false;
         if (board.getPiece(pos).getColor() == currentPlayer.getColor()) {
@@ -124,6 +132,8 @@ public class Game implements Model {
             if (isValidMove(oldPos, newPos)) {
                 board.setPiece(getPiece(oldPos), newPos);
                 board.dropPiece(oldPos);
+              
+                historyOfMove(oldPos, newPos);
                 
                 King oppositeKing;
                 if (currentPlayer.getColor() == Color.WHITE) oppositeKing = blackKing;
@@ -148,6 +158,13 @@ public class Game implements Model {
             }
             else throw new IllegalArgumentException("La position jouée n'est pas valide, car le joueur est en position d'échec");
         }
+    }
+    
+    @Override
+    public List<Move> historyOfMove(Position oldPos, Position newPos) {
+        List<Move> historyOfMoves = history;
+        historyOfMoves.add(new Move(oldPos,newPos));
+        return historyOfMoves;
     }
 
     @Override

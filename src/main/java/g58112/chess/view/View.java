@@ -32,6 +32,11 @@ public interface View {
      * Displays a message inviting the current player (white or black) to play.
      */
     public void displayPlayer();
+    
+    /**
+     * Displays a list of history of moves
+     */
+    public void displayHistory();
 
     /**
      * Requests a valid position on the board from the user.

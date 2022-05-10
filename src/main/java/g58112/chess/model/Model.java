@@ -39,6 +39,13 @@ public interface Model {
     public Player getOppositePlayer();
 
     /**
+     * Getter for List of history of moves
+     *
+     * @return the list of moves
+     */
+    public List<Move> getHistory();
+    
+    /**
      * Check if the square at the given position is occupied
      * by a piece of the current player.
      *
@@ -64,6 +71,13 @@ public interface Model {
      */
     public void movePiecePosition(Position oldPos, Position newPos);
 
+    /**
+     * List of moves played
+     *
+     * @return the list of moves played
+     */
+    public List<Move> historyOfMove(Position oldPos, Position newPos);
+    
     /**
      * Check if the game is over or not
      *

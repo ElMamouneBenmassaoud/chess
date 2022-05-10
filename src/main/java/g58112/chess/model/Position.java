@@ -85,4 +85,39 @@ public class Position {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return  stringToInt() + (getRow()+1) ;
+    }
+    
+    /**
+     * change the letter to an integer
+     *
+     * @return the integer
+     */
+    private String stringToInt() {
+        String column;
+        switch (this.column) {
+            case 0 ->
+                column = "a";
+            case 1 ->
+                column = "b";
+            case 2 ->
+                column = "c";
+            case 3 ->
+                column = "d";
+            case 4 ->
+                column = "e";
+            case 5 ->
+                column = "f";
+            case 6 ->
+                column = "g";
+            case 7 ->
+                column = "h";
+            default -> {
+                column = "?";
+            }
+        }
+        return column;
+    }
 }

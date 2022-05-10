@@ -26,4 +26,11 @@ public class Move {
     public Position getNewPos() {
         return newPos;
     }
+
+    @Override
+    public String toString() {
+        return getOldPos() + "-" + getNewPos();
+    }
+    
+    
 }

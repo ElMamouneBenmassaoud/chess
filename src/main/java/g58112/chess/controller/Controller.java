@@ -58,6 +58,7 @@ public class Controller {
             view.displayMessage("La position d'arrivée:");
             Position newPos = view.askPosition();
             model.movePiecePosition(oldPos, newPos);
+            view.displayHistory();
         } catch (IllegalArgumentException e) {
             view.displayError(e.getMessage());
             movePiece();
