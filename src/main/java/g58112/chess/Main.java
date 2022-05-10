@@ -16,6 +16,7 @@ public class Main {
         Model game = new Game();
         Controller controller = new Controller(game, new TextView(game));
         controller.play();
+        
     }
 
 }
